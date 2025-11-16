@@ -1,0 +1,246 @@
+.environmental-risk {
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 6px solid;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.environmental-risk.risk-critical {
+  background: #fff5f5;
+  border-color: #6f42c1;
+}
+
+.environmental-risk.risk-high {
+  background: #fff8e1;
+  border-color: #dc3545;
+}
+
+.environmental-risk.risk-medium {
+  background: #fffbf0;
+  border-color: #ffc107;
+}
+
+.environmental-risk.risk-low {
+  background: #f0f9ff;
+  border-color: #28a745;
+}
+
+.environmental-risk h3 {
+  color: #495057;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+.data-source-notice {
+  padding: 15px;
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.data-source-notice p {
+  margin: 5px 0;
+  color: #856404;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.data-source-info {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.data-source-info code {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #dc3545;
+}
+
+.data-source-warning {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff3cd;
+  border-left: 3px solid #ffc107;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #856404;
+  line-height: 1.5;
+}
+
+.update-time {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.btn-refresh {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-refresh:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.risk-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.risk-score span:first-child {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #495057;
+}
+
+.risk-level-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-level-badge.risk-critical {
+  background: #6f42c1;
+  color: white;
+}
+
+.risk-level-badge.risk-high {
+  background: #dc3545;
+  color: white;
+}
+
+.risk-level-badge.risk-medium {
+  background: #ffc107;
+  color: #333;
+}
+
+.risk-level-badge.risk-low {
+  background: #28a745;
+  color: white;
+}
+
+.environmental-data {
+  margin-bottom: 20px;
+}
+
+.environmental-data h4 {
+  color: #495057;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.data-item {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+.data-date {
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 10px;
+}
+
+.data-values div {
+  margin: 5px 0;
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.risk-message {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.risk-message p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+}
+
+.risk-factors,
+.recommendations {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+.risk-factors h4,
+.recommendations h4 {
+  margin-bottom: 10px;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.risk-factors ul,
+.recommendations ul {
+  list-style: none;
+  padding: 0;
+}
+
+.risk-factors li,
+.recommendations li {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  color: #495057;
+  border-left: 3px solid #667eea;
+}
+
+.environmental-loading {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .risk-score {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .data-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

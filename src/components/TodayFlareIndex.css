@@ -1,0 +1,301 @@
+.today-flare-index {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 3px solid;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.today-flare-index.loading {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.loading-spinner {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 위험 수준별 색상 */
+.today-flare-index.index-low {
+  border-color: #4caf50;
+  background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%);
+}
+
+.today-flare-index.index-medium {
+  border-color: #ff9800;
+  background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%);
+}
+
+.today-flare-index.index-high {
+  border-color: #f44336;
+  background: linear-gradient(135deg, #ffffff 0%, #ffebee 100%);
+}
+
+.today-flare-index.index-critical {
+  border-color: #d32f2f;
+  background: linear-gradient(135deg, #ffffff 0%, #ffcdd2 100%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 32px rgba(211, 47, 47, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(211, 47, 47, 0.5);
+  }
+}
+
+.flare-index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.flare-index-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+}
+
+.index-badge .risk-badge {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.risk-badge.risk-low {
+  background: #4caf50;
+  color: white;
+}
+
+.risk-badge.risk-medium {
+  background: #ff9800;
+  color: white;
+}
+
+.risk-badge.risk-high {
+  background: #f44336;
+  color: white;
+}
+
+.risk-badge.risk-critical {
+  background: #d32f2f;
+  color: white;
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.flare-index-main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.index-score {
+  text-align: center;
+  padding: 20px;
+}
+
+.score-circle {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.index-low .score-circle {
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+}
+
+.index-medium .score-circle {
+  background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);
+}
+
+.index-high .score-circle {
+  background: linear-gradient(135deg, #f44336 0%, #e57373 100%);
+}
+
+.index-critical .score-circle {
+  background: linear-gradient(135deg, #d32f2f 0%, #ef5350 100%);
+}
+
+.score-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 5px;
+}
+
+.score-probability {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.score-probability strong {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.index-message {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.index-message p {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.index-factors {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.index-factors h4 {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.factors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.factor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.factor-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.factor-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.index-recommendations {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+.index-recommendations h4 {
+  margin: 0 0 15px 0;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.index-recommendations ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.index-recommendations li {
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.index-recommendations li:last-child {
+  margin-bottom: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .today-flare-index {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flare-index-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .flare-index-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .score-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .score-value {
+    font-size: 2.5rem;
+  }
+
+  .factors-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .index-message p {
+    font-size: 1.1rem;
+  }
+}
+
