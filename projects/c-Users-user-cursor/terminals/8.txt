@@ -1,0 +1,13 @@
+---
+pid: 19452
+cwd: |
+  C:\Users\user\.cursor
+active_command: |
+  git add .
+  git commit -m "upload all files"
+  git push
+---
+PS C:\Users\user\.cursor> git add .
+>> git commit -m "upload all files"
+>> git push
+>>
