@@ -1,5 +1,5 @@
 ---
-pid: 23208
+pid: 40844
 cwd: |
   C:\Users\user\.cursor
 ---
@@ -18,6 +18,9 @@ Port 5174 is in use, trying another one...
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
  *  History restored 
 
 PS C:\Users\user\.cursor> 

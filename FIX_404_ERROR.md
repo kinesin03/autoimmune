@@ -121,3 +121,4 @@ git push
 - [ ] `dist` 폴더에 `index.html` 있음
 - [ ] Redirects 설정 확인됨
 
+

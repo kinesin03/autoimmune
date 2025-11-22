@@ -1,25 +1,69 @@
 ---
-pid: 3684
+pid: 37540
 cwd: |
   C:\Users\user\.cursor
-last_command: git status
-last_exit_code: 0
 ---
-PS C:\Users\user\.cursor> git status
+PS C:\Users\user\.cursor> git add .
+>> git commit -m "upload all files"
+>> git push
 >> 
-On branch main
-Your branch is up to date with 'origin/main'.
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/7.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/8.txt', LF will be replaced by CRLF the next time Git touches it
+[main c3d9a0a] upload all files
+ 4 files changed, 149 insertions(+), 3 deletions(-)
+ create mode 100644 projects/c-Users-user-cursor/terminals/7.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/8.txt
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 2.20 KiB | 375.00 KiB/s, done.
+Total 9 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kinesin03/autoimmune.git
+   a6afadb..c3d9a0a  main -> main
+PS C:\Users\user\.cursor> git add .
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/8.txt', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\user\.cursor> git commit -m "upload all"
+[main 16887bd] upload all
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+PS C:\Users\user\.cursor> git push
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 954 bytes | 136.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/kinesin03/autoimmune.git
+   c3d9a0a..16887bd  main -> main
+PS C:\Users\user\.cursor> 
+PS C:\Users\user\.cursor> git remote remove origin
+>>
+PS C:\Users\user\.cursor> https://github.com/USERNAME/.cursor.git
+https://github.com/USERNAME/.cursor.git : 'https://github.com/USERNAME/.cursor.git' 용어가 cmdlet, 함수, 스크립트 파일 또는 실행할 수 
+있는 프로그램 이름으로 인식되지 않습니다. 이름이 정확한지 확인하고 경로가 포함된 경우 경로가 올바른지 검증한 다음 다시 시도하십시오.    
+위치 줄:1 문자:1
++ https://github.com/USERNAME/.cursor.git
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (https://github.com/USERNAME/.cursor.git:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
 
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-  (commit or discard the untracked or modified content in submodules)
-        modified:   cursor-talk-to-figma-mcp (untracked content)
-        modified:   projects/c-Users-user-cursor/terminals/6.txt
+PS C:\Users\user\.cursor> git remote remove origin
+>> git remote add origin https://github.com/kinesin03/.cursor.git
+>> git push -u origin main
+>>
+error: No such remote: 'origin'
+To https://github.com/kinesin03/.cursor.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/kinesin03/.cursor.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\user\.cursor> 
+ *  History restored 
 
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-        projects/c-Users-user-cursor/terminals/7.txt
-
-no changes added to commit (use "git add" and/or "git commit -a")
 PS C:\Users\user\.cursor>

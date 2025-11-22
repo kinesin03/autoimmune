@@ -1,7 +1,11 @@
 ---
-pid: 24436
+pid: 17776
 cwd: |
   C:\Users\user\.cursor
+active_command: git add .
+last_command: |
+  git remote add origin https://github.com/kinesin03/autoimmune.git
+last_exit_code: 0
 ---
 PS C:\Users\user\.cursor> git remote remove origin
 >> git remote add origin https://github.com/kinesin03/.cursor.git
@@ -17,4 +21,8 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 PS C:\Users\user\.cursor> 
  *  History restored 
 
-PS C:\Users\user\.cursor>
+PS C:\Users\user\.cursor> git remote remove origin
+>> 
+PS C:\Users\user\.cursor> git remote add origin https://github.com/kinesin03/autoimmune.git
+PS C:\Users\user\.cursor> git add .
+>>

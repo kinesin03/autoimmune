@@ -1,120 +1,26 @@
 ---
-pid: 39468
+pid: 7924
 cwd: |
   C:\Users\user\.cursor
-last_command: |
-  git add .
-  git commit -m "Fix 404 error - add redirects"
-  git push
-last_exit_code: 0
 ---
-PS C:\Users\user\.cursor> git add .
->> git commit -m "Fix 404 error - add redirects"
->> git push
-warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/App.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/App.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/EmotionalCare.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/EmotionalCare.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/EnvironmentalRisk.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FlareDiary.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FlareDiary.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FlareManagement.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FlareManagement.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'mcp.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/1.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/2.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/3.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/4.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/5.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/AppNewDesign.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/App_backup.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/CommunitySpace.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaFourthPage.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaFourthPage.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntro.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntro.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntroSlide.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntroSlide.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaSecondPage.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaSecondPage.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaThirdPage.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaThirdPage.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide1.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide1.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide2.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide2.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide3.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/IntroSlide3.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/QuestModal.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/QuestModal.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/SplashScreen.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/SplashScreen.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/TodayFlareIndexNew.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/TodayFlareIndexNew.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/utils/gameSystem.ts', LF will be replaced by CRLF the next time Git touches it
-[main a6afadb] Fix 404 error - add redirects
- 66 files changed, 9509 insertions(+), 1175 deletions(-)
- create mode 100644 DEPLOYMENT_GUIDE.md
- create mode 100644 FIX_404_ERROR.md
- create mode 100644 QUICK_START.md
- create mode 100644 mcp.json
- create mode 100644 netlify.toml
- create mode 100644 projects/c-Users-user-cursor/terminals/1.txt
- create mode 100644 projects/c-Users-user-cursor/terminals/2.txt
- create mode 100644 projects/c-Users-user-cursor/terminals/3.txt
- create mode 100644 projects/c-Users-user-cursor/terminals/4.txt
- create mode 100644 projects/c-Users-user-cursor/terminals/5.txt
- create mode 100644 projects/c-Users-user-cursor/terminals/6.txt
- create mode 100644 public/_redirects
- create mode 100644 src/AppNewDesign.css
- create mode 100644 src/App_backup.tsx
- create mode 100644 src/App_new.tsx
- create mode 100644 src/components/CharacterShop.tsx
- create mode 100644 src/components/CharacterShopModal.css
- create mode 100644 src/components/CharacterShopModal.tsx
- create mode 100644 src/components/CommunitySpace.css
- create mode 100644 src/components/CommunitySpace.tsx
- create mode 100644 src/components/DashboardView.tsx
- create mode 100644 src/components/FigmaFourthPage.css
- create mode 100644 src/components/FigmaFourthPage.tsx
- create mode 100644 src/components/FigmaIntro.css
- create mode 100644 src/components/FigmaIntro.tsx
- create mode 100644 src/components/FigmaIntroSlide.css
- create mode 100644 src/components/FigmaIntroSlide.tsx
- create mode 100644 src/components/FigmaSecondPage.css
- create mode 100644 src/components/FigmaSecondPage.tsx
- create mode 100644 src/components/FigmaThirdPage.css
- create mode 100644 src/components/FigmaThirdPage.tsx
- create mode 100644 src/components/HealthJournal.tsx
- create mode 100644 src/components/IntroSlide1.css
- create mode 100644 src/components/IntroSlide1.tsx
- create mode 100644 src/components/IntroSlide2.css
- create mode 100644 src/components/IntroSlide2.tsx
- create mode 100644 src/components/IntroSlide3.css
- create mode 100644 src/components/IntroSlide3.tsx
- create mode 100644 src/components/PredictionAndCare.tsx
- create mode 100644 src/components/QuestModal.css
- create mode 100644 src/components/QuestModal.tsx
- create mode 100644 src/components/SocialIcons.tsx
- create mode 100644 src/components/SplashScreen.css
- create mode 100644 src/components/SplashScreen.tsx
- create mode 100644 src/components/TodayFlareIndexNew.css
- create mode 100644 src/components/TodayFlareIndexNew.tsx
- create mode 100644 src/components/ui/button.tsx
- create mode 100644 src/components/ui/input.tsx
- create mode 100644 src/components/ui/sonner.tsx
- delete mode 100644 src/socket.ts
- create mode 100644 src/utils/gameSystem.ts
- create mode 100644 vercel.json
-Enumerating objects: 93, done.
-Counting objects: 100% (93/93), done.
-Delta compression using up to 16 threads
-Compressing objects: 100% (70/70), done.
-Writing objects: 100% (75/75), 71.25 KiB | 1.03 MiB/s, done.
-Total 75 (delta 24), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (24/24), completed with 10 local objects.
-To https://github.com/kinesin03/autoimmune.git
-   4346851..a6afadb  main -> main
+PS C:\Users\user\.cursor> git status
+>> 
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+  (commit or discard the untracked or modified content in submodules)
+        modified:   cursor-talk-to-figma-mcp (untracked content)
+        modified:   projects/c-Users-user-cursor/terminals/6.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        projects/c-Users-user-cursor/terminals/7.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
 PS C:\Users\user\.cursor>

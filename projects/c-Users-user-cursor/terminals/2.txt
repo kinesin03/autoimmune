@@ -1,5 +1,5 @@
 ---
-pid: 5920
+pid: 13508
 cwd: |
   C:\Users\user\.cursor
 ---
@@ -50,6 +50,9 @@ cwd: |
       at parse (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:14602:38)
       at parser (C:\Users\user\.cursor\node_modules\@babel\core\lib\parser\index.js:41:34)
 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
  *  History restored 
 
 PS C:\Users\user\.cursor> 

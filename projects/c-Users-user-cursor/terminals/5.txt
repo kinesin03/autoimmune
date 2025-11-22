@@ -1,53 +1,107 @@
 ---
-pid: -1
+pid: 33032
 cwd: |
   C:\Users\user\.cursor
-active_command: npm run dev
 ---
-$ npm run dev
+warning: in the working copy of 'src/components/FlareManagement.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FlareManagement.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'mcp.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/1.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/2.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/3.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/4.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/5.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/AppNewDesign.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/App_backup.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/CommunitySpace.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaFourthPage.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaFourthPage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaIntro.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaIntro.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaIntroSlide.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaIntroSlide.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaSecondPage.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaSecondPage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaThirdPage.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/FigmaThirdPage.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide1.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide1.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide2.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide2.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide3.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/IntroSlide3.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/QuestModal.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/QuestModal.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/SplashScreen.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/SplashScreen.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/TodayFlareIndexNew.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/TodayFlareIndexNew.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/utils/gameSystem.ts', LF will be replaced by CRLF the next time Git touches it
+[main a6afadb] Fix 404 error - add redirects
+ 66 files changed, 9509 insertions(+), 1175 deletions(-)
+ create mode 100644 DEPLOYMENT_GUIDE.md
+ create mode 100644 FIX_404_ERROR.md
+ create mode 100644 QUICK_START.md
+ create mode 100644 mcp.json
+ create mode 100644 netlify.toml
+ create mode 100644 projects/c-Users-user-cursor/terminals/1.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/2.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/3.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/4.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/5.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/6.txt
+ create mode 100644 public/_redirects
+ create mode 100644 src/AppNewDesign.css
+ create mode 100644 src/App_backup.tsx
+ create mode 100644 src/App_new.tsx
+ create mode 100644 src/components/CharacterShop.tsx
+ create mode 100644 src/components/CharacterShopModal.css
+ create mode 100644 src/components/CharacterShopModal.tsx
+ create mode 100644 src/components/CommunitySpace.css
+ create mode 100644 src/components/CommunitySpace.tsx
+ create mode 100644 src/components/DashboardView.tsx
+ create mode 100644 src/components/FigmaFourthPage.css
+ create mode 100644 src/components/FigmaFourthPage.tsx
+ create mode 100644 src/components/FigmaIntro.css
+ create mode 100644 src/components/FigmaIntro.tsx
+ create mode 100644 src/components/FigmaIntroSlide.css
+ create mode 100644 src/components/FigmaIntroSlide.tsx
+ create mode 100644 src/components/FigmaSecondPage.css
+ create mode 100644 src/components/FigmaSecondPage.tsx
+ create mode 100644 src/components/FigmaThirdPage.css
+ create mode 100644 src/components/FigmaThirdPage.tsx
+ create mode 100644 src/components/HealthJournal.tsx
+ create mode 100644 src/components/IntroSlide1.css
+ create mode 100644 src/components/IntroSlide1.tsx
+ create mode 100644 src/components/IntroSlide2.css
+ create mode 100644 src/components/IntroSlide2.tsx
+ create mode 100644 src/components/IntroSlide3.css
+ create mode 100644 src/components/IntroSlide3.tsx
+ create mode 100644 src/components/PredictionAndCare.tsx
+ create mode 100644 src/components/QuestModal.css
+ create mode 100644 src/components/QuestModal.tsx
+ create mode 100644 src/components/SocialIcons.tsx
+ create mode 100644 src/components/SplashScreen.css
+ create mode 100644 src/components/SplashScreen.tsx
+ create mode 100644 src/components/TodayFlareIndexNew.css
+ create mode 100644 src/components/TodayFlareIndexNew.tsx
+ create mode 100644 src/components/ui/button.tsx
+ create mode 100644 src/components/ui/input.tsx
+ create mode 100644 src/components/ui/sonner.tsx
+ delete mode 100644 src/socket.ts
+ create mode 100644 src/utils/gameSystem.ts
+ create mode 100644 vercel.json
+Enumerating objects: 93, done.
+Counting objects: 100% (93/93), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (70/70), done.
+Writing objects: 100% (75/75), 71.25 KiB | 1.03 MiB/s, done.
+Total 75 (delta 24), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (24/24), completed with 10 local objects.
+To https://github.com/kinesin03/autoimmune.git
+   4346851..a6afadb  main -> main
+PS C:\Users\user\.cursor> 
+ *  History restored 
 
-> autoimmune-symptom-checker@1.0.0 dev
-> vite
-
-The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
-
-  VITE v5.4.21  ready in 2130 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-오후 11:24:50 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:24:52 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:24:55 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:25:07 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:25:19 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:25:22 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:25:25 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:25:56 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:26:05 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:26:16 [vite] hmr update /src/components/CharacterShopModal.css
-오후 11:26:16 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:26:16 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:26:16 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:32:21 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:32:57 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:33:09 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:33:19 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:33:19 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:37:28 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:37:30 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:37:32 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:37:49 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:38:08 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:38:18 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:39:31 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:39:35 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:39:47 [vite] hmr update /src/components/TodayFlareIndexNew.css
-오후 11:42:07 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:42:45 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:01 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:21 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:28 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:34 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:35 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
-오후 11:43:46 [vite] hmr update /src/components/CharacterShopModal.tsx
-오후 11:43:46 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+PS C:\Users\user\.cursor>
