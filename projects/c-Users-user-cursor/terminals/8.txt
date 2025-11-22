@@ -2,12 +2,31 @@
 pid: 19452
 cwd: |
   C:\Users\user\.cursor
-active_command: |
+active_command: git add .
+last_command: |
   git add .
   git commit -m "upload all files"
   git push
+last_exit_code: 0
 ---
 PS C:\Users\user\.cursor> git add .
 >> git commit -m "upload all files"
 >> git push
->>
+>> 
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/7.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/8.txt', LF will be replaced by CRLF the next time Git touches it
+[main c3d9a0a] upload all files
+ 4 files changed, 149 insertions(+), 3 deletions(-)
+ create mode 100644 projects/c-Users-user-cursor/terminals/7.txt
+ create mode 100644 projects/c-Users-user-cursor/terminals/8.txt
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (9/9), 2.20 KiB | 375.00 KiB/s, done.
+Total 9 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/kinesin03/autoimmune.git
+   a6afadb..c3d9a0a  main -> main
+PS C:\Users\user\.cursor> git add .
