@@ -1,0 +1,35 @@
+---
+pid: 23208
+cwd: |
+  C:\Users\user\.cursor
+---
+PS C:\Users\user\.cursor> npm run dev
+
+> autoimmune-symptom-checker@1.0.0 dev
+> vite
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+Port 5173 is in use, trying another one...
+Port 5174 is in use, trying another one...
+
+  VITE v5.4.21  ready in 564 ms
+
+  ➜  Local:   http://localhost:5175/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor>

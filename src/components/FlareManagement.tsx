@@ -17,6 +17,7 @@ import StressRecordForm from './StressRecordForm';
 import FoodRecordForm from './FoodRecordForm';
 import SleepRecordForm from './SleepRecordForm';
 import FlareAnalysisResults from './FlareAnalysisResults';
+import { trackActivity } from '../utils/gameSystem';
 import './FlareManagement.css';
 
 const FlareManagement: React.FC = () => {
@@ -75,6 +76,7 @@ const FlareManagement: React.FC = () => {
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
     }));
+    trackActivity('management');
   };
 
   const handleAddStress = (stress: StressRecord) => {
@@ -84,6 +86,7 @@ const FlareManagement: React.FC = () => {
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
     }));
+    trackActivity('management');
   };
 
   const handleAddFood = (food: FoodRecord) => {
@@ -95,6 +98,7 @@ const FlareManagement: React.FC = () => {
         return b.time.localeCompare(a.time);
       })
     }));
+    trackActivity('management');
   };
 
   const handleAddSleep = (sleep: SleepRecord) => {
@@ -104,6 +108,7 @@ const FlareManagement: React.FC = () => {
         new Date(b.date).getTime() - new Date(a.date).getTime()
       )
     }));
+    trackActivity('management');
   };
 
   const handleDeleteFlare = (id: string) => {
@@ -134,91 +139,121 @@ const FlareManagement: React.FC = () => {
     }));
   };
 
+  // 오늘 날짜
+  const today = new Date().toISOString().split('T')[0];
+  const todayFormatted = new Date().toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'short'
+  });
+
   return (
-    <div className="flare-management">
-      <div className="flare-header">
-        <h2>Flare 유발 요인 추정 및 관리</h2>
-        <div className="tab-buttons">
-          <button
-            className={activeTab === 'record' ? 'active' : ''}
-            onClick={() => setActiveTab('record')}
-          >
-            기록하기
-          </button>
-          <button
-            className={activeTab === 'analysis' ? 'active' : ''}
-            onClick={() => setActiveTab('analysis')}
-          >
-            분석 결과
-          </button>
+    <div className="ai-prediction">
+      {/* 헤더 */}
+      <div className="prediction-header">
+        <div className="header-content">
+          <div className="header-text-wrapper">
+            <h1 className="prediction-title">분석</h1>
+            <p className="prediction-subtitle">Flare 유발 요인을 분석하고 예측합니다.</p>
+          </div>
         </div>
       </div>
 
-      {activeTab === 'record' && (
-        <div className="record-section">
-          <div className="record-type-selector">
-            <button
-              className={recordType === 'flare' ? 'active' : ''}
-              onClick={() => setRecordType('flare')}
-            >
-              Flare 기록
-            </button>
-            <button
-              className={recordType === 'stress' ? 'active' : ''}
-              onClick={() => setRecordType('stress')}
-            >
-              스트레스 기록
-            </button>
-            <button
-              className={recordType === 'food' ? 'active' : ''}
-              onClick={() => setRecordType('food')}
-            >
-              음식 기록
-            </button>
-            <button
-              className={recordType === 'sleep' ? 'active' : ''}
-              onClick={() => setRecordType('sleep')}
-            >
-              수면 기록
-            </button>
-          </div>
+      {/* 콘텐츠 영역 - 흰색 박스 */}
+      <div className="prediction-content-wrapper">
+        {/* 날짜 표시 */}
+        <div className="date-display-box">
+          <span className="date-label">오늘</span>
+          <span className="date-value">{todayFormatted}</span>
+        </div>
 
-          <div className="record-forms">
-            {recordType === 'flare' && (
-              <FlareRecordForm
-                onAdd={handleAddFlare}
-                onDelete={handleDeleteFlare}
-                existingRecords={data.flares}
-              />
-            )}
-            {recordType === 'stress' && (
-              <StressRecordForm
-                onAdd={handleAddStress}
-                onDelete={handleDeleteStress}
-                existingRecords={data.stressRecords}
-              />
-            )}
-            {recordType === 'food' && (
-              <FoodRecordForm
-                onAdd={handleAddFood}
-                onDelete={handleDeleteFood}
-                existingRecords={data.foodRecords}
-              />
-            )}
-            {recordType === 'sleep' && (
-              <SleepRecordForm
-                onAdd={handleAddSleep}
-                onDelete={handleDeleteSleep}
-                existingRecords={data.sleepRecords}
-              />
-            )}
+        {/* 탭 */}
+        <div className="prediction-tabs">
+          <div className="tabs-container">
+            <button
+              className={`tab-button ${activeTab === 'record' ? 'active' : ''}`}
+              onClick={() => setActiveTab('record')}
+            >
+              기록하기
+            </button>
+            <button
+              className={`tab-button ${activeTab === 'analysis' ? 'active' : ''}`}
+              onClick={() => setActiveTab('analysis')}
+            >
+              분석 결과
+            </button>
           </div>
         </div>
-      )}
 
-      {activeTab === 'analysis' && (
-        <FlareAnalysisResults data={data} />
-      )}
+        {activeTab === 'record' && (
+          <div className="record-section">
+            <div className="record-type-selector">
+              <button
+                className={`record-type-btn ${recordType === 'flare' ? 'active' : ''}`}
+                onClick={() => setRecordType('flare')}
+              >
+                Flare 기록
+              </button>
+              <button
+                className={`record-type-btn ${recordType === 'stress' ? 'active' : ''}`}
+                onClick={() => setRecordType('stress')}
+              >
+                스트레스 기록
+              </button>
+              <button
+                className={`record-type-btn ${recordType === 'food' ? 'active' : ''}`}
+                onClick={() => setRecordType('food')}
+              >
+                음식 기록
+              </button>
+              <button
+                className={`record-type-btn ${recordType === 'sleep' ? 'active' : ''}`}
+                onClick={() => setRecordType('sleep')}
+              >
+                수면 기록
+              </button>
+            </div>
+
+            <div className="record-forms">
+              {recordType === 'flare' && (
+                <FlareRecordForm
+                  onAdd={handleAddFlare}
+                  onDelete={handleDeleteFlare}
+                  existingRecords={data.flares}
+                />
+              )}
+              {recordType === 'stress' && (
+                <StressRecordForm
+                  onAdd={handleAddStress}
+                  onDelete={handleDeleteStress}
+                  existingRecords={data.stressRecords}
+                />
+              )}
+              {recordType === 'food' && (
+                <FoodRecordForm
+                  onAdd={handleAddFood}
+                  onDelete={handleDeleteFood}
+                  existingRecords={data.foodRecords}
+                />
+              )}
+              {recordType === 'sleep' && (
+                <SleepRecordForm
+                  onAdd={handleAddSleep}
+                  onDelete={handleDeleteSleep}
+                  existingRecords={data.sleepRecords}
+                />
+              )}
+            </div>
+          </div>
+        )}
+
+        {activeTab === 'analysis' && (
+          <div className="analysis-section">
+            <FlareAnalysisResults data={data} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

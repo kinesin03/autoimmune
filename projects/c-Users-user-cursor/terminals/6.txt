@@ -1,0 +1,12 @@
+---
+pid: 39468
+cwd: |
+  C:\Users\user\.cursor
+active_command: |
+  git add .
+  git commit -m "Fix 404 error - add redirects"
+  git push
+---
+PS C:\Users\user\.cursor> git add .
+>> git commit -m "Fix 404 error - add redirects"
+>> git push

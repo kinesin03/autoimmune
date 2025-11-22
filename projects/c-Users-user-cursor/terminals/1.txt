@@ -1,0 +1,82 @@
+---
+pid: 36432
+cwd: |
+  C:\Users\user\.cursor
+---
+or\node_modules\@babel\parser\lib\index.js:10895:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9839:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10848:23)
+      at C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10844:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12495:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10844:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13218:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12874:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9569:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12843:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12823:17)
+오후 10:03:06 [vite] hmr update /src/components/EmotionalCare.tsx
+오후 10:04:06 [vite] hmr update /src/components/EmotionalCare.css
+오후 10:04:20 [vite] hmr update /src/components/EmotionalCare.tsx
+오후 10:04:20 [vite] hmr update /src/components/EmotionalCare.css
+오후 10:28:25 [vite] hmr update /src/App.tsx
+오후 10:28:29 [vite] hmr update /src/App.tsx (x2)
+오후 10:28:36 [vite] hmr update /src/components/FlareManagement.tsx
+오후 10:28:36 [vite] hmr update /src/components/FlareManagement.tsx (x2)
+오후 10:28:40 [vite] hmr update /src/components/FlareManagement.tsx (x3)
+오후 10:28:40 [vite] hmr update /src/components/FlareManagement.tsx (x4)
+오후 10:28:58 [vite] hmr update /src/components/FlareManagement.css
+오후 10:29:12 [vite] hmr update /src/App.tsx
+오후 10:29:12 [vite] hmr update /src/components/FlareManagement.tsx
+오후 10:29:13 [vite] hmr update /src/App.tsx
+오후 10:29:13 [vite] hmr update /src/components/FlareManagement.css
+오후 10:32:47 [vite] hmr update /src/components/EmotionalCare.tsx
+오후 10:33:20 [vite] hmr update /src/components/EmotionalCare.css
+오후 10:33:22 [vite] hmr update /src/App.tsx
+오후 10:34:48 [vite] hmr update /src/App.tsx (x2)
+오후 10:34:48 [vite] hmr update /src/components/EmotionalCare.css
+오후 10:34:48 [vite] hmr update /src/components/EmotionalCare.tsx
+오후 10:36:39 [vite] hmr update /src/components/EmotionalCare.tsx (x2)
+오후 10:36:44 [vite] hmr update /src/components/EmotionalCare.tsx (x3)
+오후 10:36:56 [vite] hmr update /src/components/EmotionalCare.tsx (x4)
+오후 10:37:04 [vite] hmr update /src/components/EmotionalCare.tsx (x5)
+오후 10:37:10 [vite] hmr update /src/components/EmotionalCare.tsx (x6)
+오후 10:37:20 [vite] hmr update /src/components/EmotionalCare.tsx (x7)
+오후 10:37:46 [vite] hmr update /src/components/EmotionalCare.css
+오후 10:37:51 [vite] hmr update /src/components/EmotionalCare.css (x2)
+오후 10:37:59 [vite] hmr update /src/components/EmotionalCare.css (x3)
+오후 10:37:59 [vite] hmr update /src/components/EmotionalCare.tsx
+오후 10:42:17 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:42:34 [vite] hmr update /src/components/FlareDiary.css
+오후 10:42:52 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 10:42:57 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 10:43:12 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:43:12 [vite] hmr update /src/components/FlareDiary.css
+오후 10:46:08 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:46:14 [vite] hmr update /src/components/FlareDiary.css
+오후 10:46:18 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 10:46:33 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 10:46:33 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:48:49 [vite] hmr update /src/components/FlareDiary.tsx (x2)
+오후 10:48:54 [vite] hmr update /src/components/FlareDiary.css
+오후 10:48:58 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 10:49:12 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 10:49:12 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:50:57 [vite] hmr update /src/components/FlareDiary.css
+오후 10:51:01 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 10:51:15 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 10:53:55 [vite] hmr update /src/components/FlareDiary.tsx
+오후 10:54:08 [vite] hmr update /src/components/FlareDiary.css
+오후 10:54:29 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 10:54:45 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 10:54:45 [vite] hmr update /src/components/FlareDiary.tsx
+오후 11:10:53 [vite] hmr update /src/components/FlareDiary.css
+오후 11:10:56 [vite] hmr update /src/components/FlareDiary.css (x2)
+오후 11:11:09 [vite] hmr update /src/components/FlareDiary.css (x3)
+오후 11:12:56 [vite] hmr update /src/components/EmotionalCare.css
+오후 11:13:01 [vite] hmr update /src/components/EmotionalCare.css (x2)
+오후 11:13:05 [vite] hmr update /src/components/EmotionalCare.css (x3)
+오후 11:13:19 [vite] hmr update /src/components/EmotionalCare.css (x오후 11:13:19 [vite] hmr update /src/components/EmotionalCare.css (x4)
+
+ *  History restored 
+
+PS C:\Users\user\.cursor>

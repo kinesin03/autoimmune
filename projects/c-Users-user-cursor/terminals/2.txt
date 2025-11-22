@@ -1,0 +1,67 @@
+---
+pid: 5920
+cwd: |
+  C:\Users\user\.cursor
+---
+\.cursor\node_modules\@babel\parser\lib\index.js:11733:14)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11395:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:4793:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11145:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11130:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11110:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9890:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10963:61)        
+      at TypeScriptParserMixin.parseExprOps (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10968:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10945:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10895:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9839:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10848:23)
+      at C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10844:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12495:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10844:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13218:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12874:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9569:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12843:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12823:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13392:61)     
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13385:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13373:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12174:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12160:10)      
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9223:18)       
+      at C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13521:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12477:14)
+      at TypeScriptParserMixin.parseFunction (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13520:10)
+      at TypeScriptParserMixin.parseExportDefaultExpression (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13983:19)    
+      at TypeScriptParserMixin.parseExportDefaultExpression (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9463:18)     
+      at TypeScriptParserMixin.parseExport (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13904:25)
+      at TypeScriptParserMixin.parseExport (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9446:20)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12954:27)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9569:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12843:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12820:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13392:36)     
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:13385:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12698:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:12688:25)
+      at TypeScriptParserMixin.parse (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:14568:25)
+      at TypeScriptParserMixin.parse (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10183:18)
+      at parse (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:14602:38)
+      at parser (C:\Users\user\.cursor\node_modules\@babel\core\lib\parser\index.js:41:34)
+
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor>

@@ -1,290 +1,1024 @@
-.flare-diary {
-  padding: 20px;
+.health-journal {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #7c3aed 0%, #ec4899 100%);
+  min-height: 100vh;
 }
 
-.diary-header {
+/* 헤더 - 제목만 */
+.journal-header {
+  background: transparent;
+  padding: 50px 20px 20px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: white;
+}
+
+.header-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.journal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.journal-subtitle {
+  font-size: 0.95rem;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+  opacity: 0.9;
+}
+
+/* 콘텐츠 래퍼 - 흰색 박스 */
+.journal-content-wrapper {
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 100px 20px;
+  margin-top: 0;
+  min-height: calc(100vh - 100px);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 날짜 표시 박스 */
+.date-display-box {
+  background: #f3f4f6;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.date-display-box .date-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.date-display-box .date-value {
+  font-size: 1rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* 탭 */
+.journal-tabs {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 20px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-button {
+  padding: 12px 24px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.tab-button.active {
+  background: #7c3aed;
+  color: white;
+  border-color: #7c3aed;
+}
+
+.tab-button:hover:not(.active) {
+  background: #e5e7eb;
+}
+
+/* 일일 기록 */
+.daily-records {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.record-card {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sleep-icon {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.meal-icon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.water-icon {
+  background: #e0f2fe;
+  color: #0ea5e9;
+}
+
+.medication-icon {
+  background: #f3e8ff;
+  color: #a855f7;
+}
+
+.exercise-icon {
+  background: #fce7f3;
+  color: #ec4899;
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.card-text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.status-tag,
+.progress-tag {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-tag {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.progress-tag {
+  background: #e0f2fe;
+  color: #0c4a6e;
+}
+
+.card-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.card-action-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card-action-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.card-action-btn.btn-view {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.card-action-btn.btn-view:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+/* 수분 섭취 진행 바 */
+.water-progress-bar {
+  display: flex;
+  gap: 4px;
+  margin: 12px 0;
+}
+
+.water-segment {
+  flex: 1;
+  height: 32px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.water-segment.filled {
+  background: #0ea5e9;
+}
+
+/* 증상 일지 */
+.symptom-diary {
+  padding: 0;
+}
+
+.symptom-section {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 16px 0;
+}
+
+.symptom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.symptom-item {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e9ecef;
 }
 
-.diary-header h2 {
-  color: #667eea;
-  font-size: 1.8rem;
+.symptom-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
 }
 
-.diary-actions {
+.severity-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.add-symptom-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.add-symptom-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.trend-section {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.week-days {
   display: flex;
-  gap: 10px;
+  justify-content: space-around;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
 }
 
-.btn {
-  padding: 10px 20px;
+.week-days span {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* 모달 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1f2937;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+}
+
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-input {
+  width: 80px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.time-selector {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.time-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.quality-buttons,
+.meal-type-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.quality-btn,
+.meal-type-btn {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.quality-btn.active,
+.meal-type-btn.active {
+  background: #7c3aed;
+  color: white;
+  border-color: #7c3aed;
+}
+
+.upload-btn {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  transition: all 0.3s;
+}
+
+.upload-btn:hover {
+  background: #f3f4f6;
+  border-color: #7c3aed;
+}
+
+.image-preview {
+  margin-top: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.medication-list {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.medication-list h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+}
+
+.medication-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* 증상 선택 UI 개선 */
+.symptom-modal-content {
+  max-width: 600px;
+}
+
+.form-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+/* 증상 그룹 컨테이너 */
+.symptom-groups-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.symptom-group {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.symptom-group:hover {
+  background: #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.symptom-group-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 4px solid;
+}
+
+.symptom-group-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: -0.01em;
+}
+
+.symptom-group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.symptom-suggestion-btn {
+  padding: 8px 12px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  word-break: keep-all;
+  line-height: 1.3;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.symptom-suggestion-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.symptom-suggestion-btn:hover::before {
+  left: 100%;
+}
+
+.symptom-suggestion-btn:hover {
+  background: white;
+  border-color: var(--group-color, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  color: var(--group-color, #7c3aed);
+}
+
+.symptom-suggestion-btn.selected {
+  background: linear-gradient(135deg, var(--group-color, #7c3aed) 0%, var(--group-color, #7c3aed) 100%);
+  border-color: var(--group-color, #7c3aed);
+  color: white;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.symptom-suggestion-btn.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.custom-symptom-input-wrapper {
+  margin-top: 8px;
+}
+
+.symptom-custom-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.symptom-custom-input:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* 심각도 버튼 개선 */
+.severity-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.severity-btn {
+  padding: 20px 16px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-height: 100px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.severity-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.severity-btn.severity-weak:hover {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.severity-btn.severity-medium:hover {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.severity-btn.severity-strong:hover {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.severity-btn.active {
+  border-width: 3px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.severity-btn.severity-weak.active {
+  background: #d1fae5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.severity-btn.severity-medium.active {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.severity-btn.severity-strong.active {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.severity-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.severity-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.btn-save.disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-save.disabled:hover {
+  background: #d1d5db;
+  transform: none;
+}
+
+/* 식사 기록 확인 모달 */
+.meal-view-item {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.meal-view-item:last-child {
+  border-bottom: none;
+}
+
+.meal-view-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.meal-view-menu {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.meal-view-image {
+  margin-top: 12px;
+}
+
+.meal-view-image img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.meal-view-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 0;
+  font-size: 0.9rem;
+}
+
+/* 운동 기록 확인 모달 */
+.exercise-view-item {
+  padding: 0;
+}
+
+.exercise-view-section {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.exercise-view-section:last-child {
+  border-bottom: none;
+}
+
+.exercise-view-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.exercise-view-value {
+  font-size: 1rem;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.exercise-view-notes {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* 약물 복용 기록 확인 모달 */
+.medication-view-item {
+  padding: 0;
+}
+
+.medication-view-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+}
+
+.medication-view-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.medication-view-record {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.medication-view-time {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.medication-view-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.modal-footer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  padding: 12px 24px;
+  background: #7c3aed;
+  color: white;
   border: none;
   border-radius: 8px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+.btn-save:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.btn-secondary {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #5a6268;
-}
-
-.trigger-list {
-  margin-bottom: 30px;
-}
-
-.trigger-list h3 {
-  color: #764ba2;
-  margin-bottom: 20px;
-  font-size: 1.4rem;
-}
-
-.triggers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.trigger-card {
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #667eea;
-}
-
-.trigger-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.trigger-name {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #495057;
-}
-
-.trigger-category {
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.category-food {
-  background: #ffc107;
-  color: #333;
-}
-
-.category-stress {
-  background: #dc3545;
-  color: white;
-}
-
-.category-environment {
-  background: #17a2b8;
-  color: white;
-}
-
-.category-sleep {
-  background: #6f42c1;
-  color: white;
-}
-
-.category-other {
-  background: #6c757d;
-  color: white;
-}
-
-.trigger-stats {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-  color: #6c757d;
-}
-
-.trigger-recommendation {
-  padding: 10px;
-  background: #f8f9fa;
-  border-radius: 6px;
-  color: #495057;
-  font-size: 0.9rem;
-}
-
-.hospital-report {
-  padding: 25px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.hospital-report h3 {
-  color: #667eea;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.report-period {
-  margin-bottom: 15px;
-  color: #6c757d;
-  font-size: 0.9rem;
-}
-
-.report-summary {
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.report-summary p {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #495057;
-}
-
-.report-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.detail-item {
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.detail-item span {
-  color: #6c757d;
-}
-
-.detail-item strong {
-  color: #667eea;
-  font-size: 1.2rem;
-}
-
-.report-triggers h4 {
-  color: #495057;
-  margin-bottom: 10px;
-}
-
-.report-triggers ul {
-  list-style: none;
-  padding: 0;
-}
-
-.report-triggers li {
-  padding: 10px;
-  margin: 5px 0;
-  background: #f8f9fa;
-  border-radius: 6px;
-  color: #495057;
-}
-
-.diary-entries h3 {
-  color: #764ba2;
-  margin-bottom: 20px;
-  font-size: 1.4rem;
-}
-
-.no-entries {
-  text-align: center;
-  padding: 40px;
-  color: #6c757d;
-  font-size: 1.1rem;
-}
-
-.entries-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.diary-entry {
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #667eea;
-}
-
-.entry-header {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.entry-date {
-  font-weight: 700;
-  color: #495057;
-  font-size: 1.1rem;
-}
-
-.entry-severity,
-.entry-duration {
-  color: #6c757d;
-  font-size: 0.9rem;
-}
-
-.entry-symptoms,
-.entry-triggers {
-  margin-top: 8px;
-  color: #495057;
-  font-size: 0.95rem;
-}
-
+/* 반응형 */
 @media (max-width: 768px) {
-  .diary-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+  .journal-header {
+    padding: 40px 16px 16px 16px;
   }
 
-  .diary-actions {
-    width: 100%;
-    flex-direction: column;
+  .journal-title {
+    font-size: 1.3rem;
   }
 
-  .btn {
-    width: 100%;
+  .journal-content-wrapper {
+    padding: 20px 16px 100px 16px;
+    border-radius: 20px 20px 0 0;
   }
 
-  .triggers-grid {
-    grid-template-columns: 1fr;
+  .date-display-box {
+    padding: 14px 16px;
+    margin-bottom: 20px;
   }
 
-  .report-details {
-    grid-template-columns: 1fr;
+  .journal-tabs {
+    padding: 0 0 16px 0;
+    margin-bottom: 20px;
+  }
+
+  .tab-button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .record-card {
+    padding: 16px;
+  }
+
+  .symptom-section,
+  .trend-section {
+    padding: 20px;
+  }
+
+  .symptom-modal-content {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .symptom-groups-container {
+    gap: 16px;
+  }
+
+  .symptom-group {
+    padding: 12px;
+  }
+
+  .symptom-group-header {
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+
+  .symptom-group-title {
+    font-size: 0.8rem;
+  }
+
+  .symptom-group-buttons {
+    gap: 5px;
+  }
+
+  .symptom-suggestion-btn {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    min-height: 32px;
+    border-radius: 6px;
+  }
+
+  .severity-buttons-grid {
+    gap: 10px;
+  }
+
+  .severity-btn {
+    padding: 16px 12px;
+    min-height: 90px;
+  }
+
+  .severity-icon {
+    font-size: 1.5rem;
+  }
+
+  .severity-label {
+    font-size: 0.85rem;
   }
 }
-

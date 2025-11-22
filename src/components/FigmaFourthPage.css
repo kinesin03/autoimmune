@@ -1,0 +1,17 @@
+.figma-fourth-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9996;
+}
+
+.figma-fourth-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  pointer-events: auto;
+}
+

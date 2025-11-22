@@ -1,0 +1,53 @@
+---
+pid: -1
+cwd: |
+  C:\Users\user\.cursor
+active_command: npm run dev
+---
+$ npm run dev
+
+> autoimmune-symptom-checker@1.0.0 dev
+> vite
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+
+  VITE v5.4.21  ready in 2130 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+오후 11:24:50 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:24:52 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:24:55 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:25:07 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:25:19 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:25:22 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:25:25 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:25:56 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:26:05 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:26:16 [vite] hmr update /src/components/CharacterShopModal.css
+오후 11:26:16 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:26:16 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:26:16 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:32:21 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:32:57 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:33:09 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:33:19 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:33:19 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:37:28 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:37:30 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:37:32 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:37:49 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:38:08 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:38:18 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:39:31 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:39:35 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:39:47 [vite] hmr update /src/components/TodayFlareIndexNew.css
+오후 11:42:07 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:42:45 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:01 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:21 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:28 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:34 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:35 [vite] hmr update /src/components/TodayFlareIndexNew.tsx
+오후 11:43:46 [vite] hmr update /src/components/CharacterShopModal.tsx
+오후 11:43:46 [vite] hmr update /src/components/TodayFlareIndexNew.tsx

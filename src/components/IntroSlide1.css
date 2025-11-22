@@ -1,0 +1,160 @@
+.intro-slide-1 {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.skip-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #7c3aed;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 10;
+  padding: 8px 16px;
+  transition: opacity 0.3s;
+}
+
+.skip-button:hover {
+  opacity: 0.7;
+}
+
+.slide-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 30px;
+  gap: 40px;
+}
+
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.heart-gradient-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7c3aed 0%, #ec4899 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.heart-icon {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.text-content {
+  text-align: center;
+  max-width: 300px;
+}
+
+.main-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.sub-text {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  width: 24px;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #7c3aed 0%, #ec4899 100%);
+}
+
+.next-button {
+  width: 90%;
+  max-width: 350px;
+  padding: 18px;
+  background: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+  margin-top: 20px;
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.next-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .main-text {
+    font-size: 1.5rem;
+  }
+
+  .sub-text {
+    font-size: 0.9rem;
+  }
+
+  .heart-gradient-circle {
+    width: 160px;
+    height: 160px;
+  }
+
+  .heart-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+

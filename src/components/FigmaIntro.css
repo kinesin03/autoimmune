@@ -1,0 +1,22 @@
+.figma-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: opacity 0.5s ease-out;
+  z-index: 9999;
+}
+
+.figma-intro.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.figma-intro-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}

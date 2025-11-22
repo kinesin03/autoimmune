@@ -1,0 +1,45 @@
+---
+pid: 4896
+cwd: |
+  C:\Users\user\.cursor
+---
+PS C:\Users\user\.cursor> npm run dev
+
+> autoimmune-symptom-checker@1.0.0 dev
+> vite
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+Port 5173 is in use, trying another one...
+Port 5174 is in use, trying another one...
+Port 5175 is in use, trying another one...
+
+  VITE v5.4.21  ready in 610 ms
+
+  ➜  Local:   http://localhost:5176/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> de novo
+de : 'de' 용어가 cmdlet, 함수, 스크립트 파일 또는 실행할 수 있는 프로그램 이름으로 인식되지 않습니다. 이름이 정확한지 확인하고 경로가 
+포함된 경우 경로가 올바른지 검증한 다음 다시 시도하십시오.
+위치 줄:1 문자:1
++ de novo
++ ~~
+    + CategoryInfo          : ObjectNotFound: (de:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor>

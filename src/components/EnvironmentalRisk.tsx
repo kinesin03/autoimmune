@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { EnvironmentalData, EnvironmentalRiskAnalysis } from '../types';
 import { analyzeEnvironmentalRisk } from '../utils/environmentalRiskAnalysis';
 import { fetchEnvironmentalData } from '../utils/weather/environmentalDataFetcher';
+import { trackActivity } from '../utils/gameSystem';
 import './EnvironmentalRisk.css';
 
 const EnvironmentalRisk: React.FC = () => {

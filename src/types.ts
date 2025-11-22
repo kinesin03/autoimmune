@@ -312,4 +312,25 @@ export interface CommunityPost {
   tags: string[];
 }
 
+// 캐릭터 아이템
+export interface CharacterItem {
+  id: string;
+  name: string;
+  category: 'outfit' | 'accessory' | 'background';
+  price: number;
+  image: string; // 이모지 또는 이미지 URL
+  description?: string;
+  color?: string; // 의상/악세서리 색상
+  backgroundGradient?: string; // 배경 그라데이션
+  design?: string; // 의상 디자인 타입
+}
+
+// 캐릭터 커스터마이징 데이터
+export interface CharacterCustomization {
+  outfit?: string; // 아이템 ID
+  accessory?: string; // 아이템 ID
+  background?: string; // 아이템 ID
+  ownedItems: string[]; // 보유한 아이템 ID 목록
+}
+
 
