@@ -32,4 +32,9 @@ lerna-debug.log*
 *.swo
 *~
 
+# Backup files
+*_backup.tsx
+*_new.tsx
+*.backup.*
+
 

@@ -331,7 +331,7 @@ const TodayFlareIndexNew: React.FC<TodayFlareIndexProps> = ({ diagnosisData }) =
                     <stop offset="100%" stopColor="#FFB380" />
                   </linearGradient>
                   {customization.outfit && (() => {
-                    const outfitItems: CharacterItem[] = [
+                    const outfitItems: Partial<CharacterItem>[] = [
                       { id: 'outfit-1', color: '#93c5fd', design: 'stripe' },
                       { id: 'outfit-2', color: '#fda4af', design: 'dot-dress' },
                       { id: 'outfit-3', color: '#6ee7b7', design: 'check' },
@@ -406,7 +406,7 @@ const TodayFlareIndexNew: React.FC<TodayFlareIndexProps> = ({ diagnosisData }) =
                 
                 {/* 의상 - Body 위에 그리기 */}
                 {customization.outfit && (() => {
-                  const outfitItems: CharacterItem[] = [
+                  const outfitItems: Partial<CharacterItem>[] = [
                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
@@ -552,7 +552,7 @@ const TodayFlareIndexNew: React.FC<TodayFlareIndexProps> = ({ diagnosisData }) =
                 <ellipse cx="66" cy="48" rx="3.5" ry="10" fill="url(#peachGradient)" transform="rotate(-25 66 48)" />
                 {/* 의상 - Right arm */}
                 {customization.outfit && (() => {
-                  const outfitItems: CharacterItem[] = [
+                  const outfitItems: Partial<CharacterItem>[] = [
                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
@@ -589,7 +589,7 @@ const TodayFlareIndexNew: React.FC<TodayFlareIndexProps> = ({ diagnosisData }) =
                 <ellipse cx="34" cy="60" rx="3.5" ry="10" fill="url(#peachGradient)" transform="rotate(25 34 60)" />
                 {/* 의상 - Left arm */}
                 {customization.outfit && (() => {
-                  const outfitItems: CharacterItem[] = [
+                  const outfitItems: Partial<CharacterItem>[] = [
                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },

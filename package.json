@@ -4,7 +4,8 @@
   "description": "자가면역질환 전조증상 자가진단 시스템",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build:check": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -5,7 +5,6 @@ import IntroSlide1 from './components/IntroSlide1';
 import IntroSlide2 from './components/IntroSlide2';
 import IntroSlide3 from './components/IntroSlide3';
 import TodayFlareIndexNew from './components/TodayFlareIndexNew';
-import EnvironmentalRisk from './components/EnvironmentalRisk';
 import ProdromalFlarePredictionComponent from './components/ProdromalFlarePrediction';
 import FlareDiary from './components/FlareDiary';
 import FlareManagement from './components/FlareManagement';

@@ -2,9 +2,11 @@
 pid: 17776
 cwd: |
   C:\Users\user\.cursor
-active_command: git add .
-last_command: |
-  git remote add origin https://github.com/kinesin03/autoimmune.git
+active_command: |
+  git add .
+  git commit -m "Fix Vercel deployment errors"
+  git push
+last_command: git push -u origin main
 last_exit_code: 0
 ---
 PS C:\Users\user\.cursor> git remote remove origin
@@ -25,4 +27,36 @@ PS C:\Users\user\.cursor> git remote remove origin
 >> 
 PS C:\Users\user\.cursor> git remote add origin https://github.com/kinesin03/autoimmune.git
 PS C:\Users\user\.cursor> git add .
+>> 
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/1.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/2.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/3.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/4.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/5.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/7.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/8.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/CharacterShopModal.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/types.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'vercel.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/9.txt', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\user\.cursor> git commit -m "initial upload"
+>> 
+[main b3e7938] initial upload
+ 15 files changed, 250 insertions(+), 212 deletions(-)
+ create mode 100644 projects/c-Users-user-cursor/terminals/9.txt
+PS C:\Users\user\.cursor> git push -u origin main
 >>
+Enumerating objects: 175, done.
+Counting objects: 100% (175/175), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (159/159), done.
+Writing objects: 100% (175/175), 190.55 KiB | 796.00 KiB/s, done.
+Total 175 (delta 52), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (52/52), done.
+To https://github.com/kinesin03/autoimmune.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\user\.cursor> git add .
+>> git commit -m "Fix Vercel deployment errors"
+>> git push

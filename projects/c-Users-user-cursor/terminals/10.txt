@@ -1,0 +1,750 @@
+---
+pid: 10292
+cwd: |
+  C:\Users\user\.cursor
+last_command: npm run build
+last_exit_code: 0
+---
+PS C:\Users\user\.cursor> npm run build
+
+> autoimmune-symptom-checker@1.0.0 build
+> tsc && vite build
+
+src/App.tsx:8:1 - error TS6133: 'EnvironmentalRisk' is declared but its value is never read.
+
+8 import EnvironmentalRisk from './components/EnvironmentalRisk';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:2:1 - error TS6192: All imports in import declaration are unused.
+
+2 import { Heart, Activity, Trophy, Home, BookHeart, Brain, Users, ShoppingBag, ArrowLeft, Eye, EyeOff } from 'lucide-react';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:3:1 - error TS6133: 'Button' is declared but its value is never read.
+
+3 import { Button } from './components/ui/button';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:4:1 - error TS6133: 'Input' is declared but its value is never read.
+
+4 import { Input } from './components/ui/input';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:5:1 - error TS6192: All imports in import declaration are unused.
+
+5 import { motion, AnimatePresence } from 'motion/react';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:7:1 - error TS6133: 'DashboardView' is declared but its value is never read.
+
+7 import { DashboardView } from './components/DashboardView';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:8:1 - error TS6133: 'HealthJournal' is declared but its value is never read.
+
+8 import { HealthJournal } from './components/HealthJournal';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:9:1 - error TS6133: 'PredictionAndCare' is declared but its value is never read.
+
+9 import { PredictionAndCare } from './components/PredictionAndCare';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:10:1 - error TS6133: 'CommunitySpace' is declared but its value is never read.
+
+10 import { CommunitySpace } from './components/CommunitySpace';
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:10:10 - error TS2614: Module '"./components/CommunitySpace"' has no exported member 'CommunitySpace'. Did you mean to use 'import CommunitySpace from "./components/CommunitySpace"' instead?
+
+10 import { CommunitySpace } from './components/CommunitySpace';
+            ~~~~~~~~~~~~~~
+
+src/App_backup.tsx:11:1 - error TS6133: 'CharacterShop' is declared but its value is never read.
+
+11 import { CharacterShop } from './components/CharacterShop';
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:12:1 - error TS6192: All imports in import declaration are unused.
+
+12 import { KakaoIcon, GoogleIcon } from './components/SocialIcons';
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:13:1 - error TS6133: 'Toaster' is declared but its value is never read.
+
+13 import { Toaster } from './components/ui/sonner';
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:19:10 - error TS6133: 'showSplash' is declared but its value is never read.
+
+19   const [showSplash, setShowSplash] = useState(false);
+            ~~~~~~~~~~
+
+src/App_backup.tsx:19:22 - error TS6133: 'setShowSplash' is declared but its value is never read.
+
+19   const [showSplash, setShowSplash] = useState(false);
+                        ~~~~~~~~~~~~~
+
+src/App_backup.tsx:20:10 - error TS6133: 'currentStep' is declared but its value is never read.
+
+20   const [currentStep, setCurrentStep] = useState(0);
+            ~~~~~~~~~~~
+
+src/App_backup.tsx:20:23 - error TS6133: 'setCurrentStep' is declared but its value is never read.
+
+20   const [currentStep, setCurrentStep] = useState(0);
+                         ~~~~~~~~~~~~~~
+
+src/App_backup.tsx:21:10 - error TS6133: 'showLogin' is declared but its value is never read.
+
+21   const [showLogin, setShowLogin] = useState(false);
+            ~~~~~~~~~
+
+src/App_backup.tsx:21:21 - error TS6133: 'setShowLogin' is declared but its value is never read.
+
+21   const [showLogin, setShowLogin] = useState(false);
+                       ~~~~~~~~~~~~
+
+src/App_backup.tsx:22:10 - error TS6133: 'showWelcome' is declared but its value is never read.
+
+22   const [showWelcome, setShowWelcome] = useState(false);
+            ~~~~~~~~~~~
+
+src/App_backup.tsx:22:23 - error TS6133: 'setShowWelcome' is declared but its value is never read.
+
+22   const [showWelcome, setShowWelcome] = useState(false);
+                         ~~~~~~~~~~~~~~
+
+src/App_backup.tsx:23:10 - error TS6133: 'showHome' is declared but its value is never read.
+
+23   const [showHome, setShowHome] = useState(false);
+            ~~~~~~~~
+
+src/App_backup.tsx:23:20 - error TS6133: 'setShowHome' is declared but its value is never read.
+
+23   const [showHome, setShowHome] = useState(false);
+                      ~~~~~~~~~~~
+
+src/App_backup.tsx:24:10 - error TS6133: 'phoneNumber' is declared but its value is never read.
+
+24   const [phoneNumber, setPhoneNumber] = useState('');
+            ~~~~~~~~~~~
+
+src/App_backup.tsx:24:23 - error TS6133: 'setPhoneNumber' is declared but its value is never read.
+
+24   const [phoneNumber, setPhoneNumber] = useState('');
+                         ~~~~~~~~~~~~~~
+
+src/App_backup.tsx:25:10 - error TS6133: 'password' is declared but its value is never read.
+
+25   const [password, setPassword] = useState('');
+            ~~~~~~~~
+
+src/App_backup.tsx:25:20 - error TS6133: 'setPassword' is declared but its value is never read.
+
+25   const [password, setPassword] = useState('');
+                      ~~~~~~~~~~~
+
+src/App_backup.tsx:26:10 - error TS6133: 'showPassword' is declared but its value is never read.
+
+26   const [showPassword, setShowPassword] = useState(false);
+            ~~~~~~~~~~~~
+
+src/App_backup.tsx:26:24 - error TS6133: 'setShowPassword' is declared but its value is never read.
+
+26   const [showPassword, setShowPassword] = useState(false);
+                          ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:27:10 - error TS6133: 'loginError' is declared but its value is never read.
+
+27   const [loginError, setLoginError] = useState('');
+            ~~~~~~~~~~
+
+src/App_backup.tsx:27:22 - error TS6133: 'setLoginError' is declared but its value is never read.
+
+27   const [loginError, setLoginError] = useState('');
+                        ~~~~~~~~~~~~~
+
+src/App_backup.tsx:73:11 - error TS2304: Cannot find name 'setShowIntroSlide1'. 
+
+73           setShowIntroSlide1(true);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:79:7 - error TS2304: Cannot find name 'showIntroSlide1'.
+
+79   if (showIntroSlide1) {
+         ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:81:8 - error TS2304: Cannot find name 'IntroSlide1'.
+
+81       <IntroSlide1
+          ~~~~~~~~~~~
+
+src/App_backup.tsx:83:11 - error TS2304: Cannot find name 'setShowIntroSlide1'. 
+
+83           setShowIntroSlide1(false);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:84:11 - error TS2304: Cannot find name 'setShowIntroSlide2'. 
+
+84           setShowIntroSlide2(true);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:87:11 - error TS2304: Cannot find name 'setShowIntroSlide1'. 
+
+87           setShowIntroSlide1(false);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:88:11 - error TS2304: Cannot find name 'setShowIntroSlide2'. 
+
+88           setShowIntroSlide2(true);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:94:7 - error TS2304: Cannot find name 'showIntroSlide2'.     
+
+94   if (showIntroSlide2) {
+         ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:96:8 - error TS2304: Cannot find name 'IntroSlide2'.
+
+96       <IntroSlide2
+          ~~~~~~~~~~~
+
+src/App_backup.tsx:98:11 - error TS2304: Cannot find name 'setShowIntroSlide2'. 
+
+98           setShowIntroSlide2(false);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:99:11 - error TS2304: Cannot find name 'setShowIntroSlide3'. 
+
+99           setShowIntroSlide3(true);
+             ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:102:11 - error TS2304: Cannot find name 'setShowIntroSlide2'.
+
+102           setShowIntroSlide2(false);
+              ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:103:11 - error TS2304: Cannot find name 'setShowIntroSlide3'.
+
+103           setShowIntroSlide3(true);
+              ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:109:7 - error TS2304: Cannot find name 'showIntroSlide3'.    
+
+109   if (showIntroSlide3) {
+          ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:111:8 - error TS2304: Cannot find name 'IntroSlide3'.        
+
+111       <IntroSlide3
+           ~~~~~~~~~~~
+
+src/App_backup.tsx:112:23 - error TS2304: Cannot find name 'setShowIntroSlide3'.
+
+112         onNext={() => setShowIntroSlide3(false)}
+                          ~~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:144:36 - error TS2304: Cannot find name 'TodayFlareIndex'.   
+
+144         {activeTab === 'today' && <TodayFlareIndex diagnosisData={diagnosisData} />}
+                                       ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:145:42 - error TS2304: Cannot find name 'EnvironmentalRisk'. 
+
+145         {activeTab === 'environment' && <EnvironmentalRisk />}
+                                             ~~~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:146:40 - error TS2304: Cannot find name 'ProdromalFlarePredictionComponent'.
+
+146         {activeTab === 'prodromal' && <ProdromalFlarePredictionComponent diagnosisData={diagnosisData} />}
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
+
+src/App_backup.tsx:147:36 - error TS2304: Cannot find name 'FlareDiary'.        
+
+147         {activeTab === 'diary' && <FlareDiary />}
+                                       ~~~~~~~~~~
+
+src/App_backup.tsx:148:41 - error TS2304: Cannot find name 'FlareManagement'.   
+
+148         {activeTab === 'management' && <FlareManagement />}
+                                            ~~~~~~~~~~~~~~~
+
+src/App_backup.tsx:149:40 - error TS2304: Cannot find name 'EmotionalCare'.     
+
+149         {activeTab === 'emotional' && <EmotionalCare />}
+                                           ~~~~~~~~~~~~~
+
+src/App_new.tsx:9:10 - error TS2614: Module '"./components/CommunitySpace"' has no exported member 'CommunitySpace'. Did you mean to use 'import CommunitySpace from "./components/CommunitySpace"' instead?
+
+9 import { CommunitySpace } from "./components/CommunitySpace";
+           ~~~~~~~~~~~~~~
+
+src/components/CharacterShopModal.tsx:2:26 - error TS6133: 'ShoppingCart' is declared but its value is never read.
+
+2 import { X, ShoppingBag, ShoppingCart } from 'lucide-react';
+                           ~~~~~~~~~~~~
+
+src/components/CharacterShopModal.tsx:4:23 - error TS6133: 'addCoins' is declared but its value is never read.
+
+4 import { getGameData, addCoins, saveGameData } from '../utils/gameSystem';    
+                        ~~~~~~~~
+
+src/components/CommunitySpace.tsx:2:58 - error TS6133: 'Users' is declared but its value is never read.
+
+2 import { Plus, TrendingUp, Search, Heart, MessageCircle, Users, ArrowUp } from 'lucide-react';
+                                                           ~~~~~
+
+src/components/CommunitySpace.tsx:174:9 - error TS6133: 'today' is declared but its value is never read.
+
+174   const today = new Date().toISOString().split('T')[0];
+            ~~~~~
+
+src/components/CommunitySpace.tsx:175:9 - error TS6133: 'todayFormatted' is declared but its value is never read.
+
+175   const todayFormatted = new Date().toLocaleDateString('ko-KR', {
+            ~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:35 - error TS6133: 'RheumatoidArthritis' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                    ~~~~~~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:56 - error TS6133: 'Psoriasis' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                         ~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:67 - error TS6133: 'CrohnsDisease' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                    ~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:82 - error TS6133: 'Type1Diabetes' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+   ~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:97 - error TS6133: 'MultipleSclerosis' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                  ~~~~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:116 - error TS6133: 'Lupus' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                                     ~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:123 - error TS6133: 'SjogrensSyndrome' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                                            ~~~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:141 - error TS6133: 'AutoimmuneThyroid' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                                                              ~~~~~~~~~~~~~~~~~ 
+
+src/components/DiseaseSpecificForms.tsx:2:160 - error TS6133: 'DailyUVIndex' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                                                                                
+ ~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:2:174 - error TS6133: 'UVIndexTimeSlot' is declared but its value is never read.
+
+2 import { DiseaseSpecificSymptoms, RheumatoidArthritis, Psoriasis, CrohnsDisease, Type1Diabetes, MultipleSclerosis, Lupus, SjogrensSyndrome, AutoimmuneThyroid, DailyUVIndex, UVIndexTimeSlot } from '../types';
+                                                                                
+                                                                                
+               ~~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:4:1 - error TS6192: All imports in import declaration are unused.
+
+4 import { getUVIndexStatus, getUVIndexStatusText, getUVIndexStatusColor, getDayName, defaultTimeSlots } from '../utils/uvIndexHelper';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/DiseaseSpecificForms.tsx:28:17 - error TS6133: 'response' is declared but its value is never read.
+
+28           const response = await axios.get(
+                   ~~~~~~~~
+
+src/components/EmotionalCare.tsx:3:31 - error TS6133: 'FlareRecord' is declared but its value is never read.
+
+3 import { FlareManagementData, FlareRecord, SleepRecord, StressReliefRoutine } from '../types';
+                                ~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:3:44 - error TS6133: 'SleepRecord' is declared but its value is never read.
+
+3 import { FlareManagementData, FlareRecord, SleepRecord, StressReliefRoutine } from '../types';
+                                             ~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:9:10 - error TS6133: 'flareData' is declared but its value is never read.
+
+9   const [flareData, setFlareData] = useState<FlareManagementData | null>(null);
+           ~~~~~~~~~
+
+src/components/EmotionalCare.tsx:11:22 - error TS6133: 'setWeeklyRisk' is declared but its value is never read.
+
+11   const [weeklyRisk, setWeeklyRisk] = useState<number[]>([15, 12, 10, 25, 18, 15, 20]);
+                        ~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:13:25 - error TS6133: 'setLastWeekScore' is declared but its value is never read.
+
+13   const [lastWeekScore, setLastWeekScore] = useState(77);
+                           ~~~~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:14:23 - error TS6133: 'setNextCheckup' is declared but its value is never read.
+
+14   const [nextCheckup, setNextCheckup] = useState<string>('2025-12-01');      
+                         ~~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:130:17 - error TS6133: 'dailyRecords' is declared but its value is never read.
+
+130           const dailyRecords = JSON.parse(savedDaily);
+                    ~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:170:9 - error TS6133: 'today' is declared but its value is never read.
+
+170   const today = new Date().toISOString().split('T')[0];
+            ~~~~~
+
+src/components/EmotionalCare.tsx:171:9 - error TS6133: 'todayFormatted' is declared but its value is never read.
+
+171   const todayFormatted = new Date().toLocaleDateString('ko-KR', {
+            ~~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:280:38 - error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ low: string; medium: string; high: string; critical: string; }'.
+
+280                 style={{ background: riskLevelColor[riskLevel] }}
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:282:18 - error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ low: string; medium: string; high: string; critical: string; }'.
+
+282                 {riskLevelText[riskLevel]} ({expectedRisk}%)
+                     ~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/EmotionalCare.tsx:290:31 - error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ low: string; medium: string; high: string; critical: string; }'.
+
+290                   background: riskLevelColor[riskLevel]
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/EnvironmentalRisk.tsx:5:1 - error TS6133: 'trackActivity' is declared but its value is never read.
+
+5 import { trackActivity } from '../utils/gameSystem';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/FigmaFourthPage.tsx:9:10 - error TS6133: 'iframeLoaded' is declared but its value is never read.
+
+9   const [iframeLoaded, setIframeLoaded] = useState(false);
+           ~~~~~~~~~~~~
+
+src/components/FigmaSecondPage.tsx:9:68 - error TS6133: 'onSkip' is declared but its value is never read.
+
+9 const FigmaSecondPage: React.FC<FigmaSecondPageProps> = ({ onNext, onSkip }) => {
+                                                                     ~~~~~~     
+
+src/components/FigmaThirdPage.tsx:9:10 - error TS6133: 'iframeLoaded' is declared but its value is never read.
+
+9   const [iframeLoaded, setIframeLoaded] = useState(false);
+           ~~~~~~~~~~~~
+
+src/components/FlareDiary.tsx:2:51 - error TS6133: 'Calendar' is declared but its value is never read.
+
+2 import { Moon, Utensils, Droplet, Pill, Dumbbell, Calendar, Plus, Edit2, Camera, X } from 'lucide-react';
+                                                    ~~~~~~~~
+
+src/components/FlareDiary.tsx:2:61 - error TS6133: 'Plus' is declared but its value is never read.
+
+2 import { Moon, Utensils, Droplet, Pill, Dumbbell, Calendar, Plus, Edit2, Camera, X } from 'lucide-react';
+                                                              ~~~~
+
+src/components/FlareDiary.tsx:2:67 - error TS6133: 'Edit2' is declared but its value is never read.
+
+2 import { Moon, Utensils, Droplet, Pill, Dumbbell, Calendar, Plus, Edit2, Camera, X } from 'lucide-react';
+                                                                    ~~~~~       
+
+src/components/FlareManagement.tsx:143:9 - error TS6133: 'today' is declared but its value is never read.
+
+143   const today = new Date().toISOString().split('T')[0];
+            ~~~~~
+
+src/components/LupusForm.tsx:3:67 - error TS6133: 'defaultTimeSlots' is declared but its value is never read.
+
+3 import { getUVIndexStatusText, getUVIndexStatusColor, getDayName, defaultTimeSlots } from '../utils/uvIndexHelper';
+                                                                    ~~~~~~~~~~~~~~~~
+
+src/components/LupusForm.tsx:199:37 - error TS6133: 'dayIndex' is declared but its value is never read.
+
+199             {dailyUVIndex.map((day, dayIndex) => (
+                                        ~~~~~~~~
+
+src/components/QuestModal.tsx:3:38 - error TS6133: 'updateQuestProgress' is declared but its value is never read.
+
+3 import { getGameData, completeQuest, updateQuestProgress } from '../utils/gameSystem';
+                                       ~~~~~~~~~~~~~~~~~~~
+
+src/components/Results.tsx:134:68 - error TS6133: 'dayIndex' is declared but its value is never read.
+
+134                 {data.diseaseSpecific.lupus.dailyUVIndex.map((day, dayIndex) => (
+                                                                       ~~~~~~~~ 
+
+src/components/TodayFlareIndexNew.tsx:7:48 - error TS6133: 'ShoppingCart' is declared but its value is never read.
+
+7 import { Zap, Shield, HelpCircle, ShoppingBag, ShoppingCart } from 'lucide-react';
+                                                 ~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:47:23 - error TS6133: 'setTodayQuests' is declared but its value is never read.
+
+47   const [todayQuests, setTodayQuests] = useState([
+                         ~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:212:32 - error TS6133: 'coins' is declared but its value is never read.
+
+212   const handleQuestComplete = (coins: number, exp: number) => {
+                                   ~~~~~
+
+src/components/TodayFlareIndexNew.tsx:212:47 - error TS6133: 'exp' is declared but its value is never read.
+
+212   const handleQuestComplete = (coins: number, exp: number) => {
+                                                  ~~~
+
+src/components/TodayFlareIndexNew.tsx:335:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+335                       { id: 'outfit-1', color: '#93c5fd', design: 'stripe' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:336:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+336                       { id: 'outfit-2', color: '#fda4af', design: 'dot-dress' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:337:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+337                       { id: 'outfit-3', color: '#6ee7b7', design: 'check' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+src/components/TodayFlareIndexNew.tsx:338:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+338                       { id: 'outfit-4', color: '#c4b5fd', design: 'heart' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+src/components/TodayFlareIndexNew.tsx:339:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+339                       { id: 'outfit-5', color: '#fcd34d', design: 'star' }, 
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+
+src/components/TodayFlareIndexNew.tsx:340:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+340                       { id: 'outfit-6', color: '#f0abfc', design: 'flower-dress' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:341:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+341                       { id: 'outfit-7', color: '#fef3c7', design: 'sweater' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:342:23 - error TS2739: Type '{ id: string; color: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+342                       { id: 'outfit-8', color: '#ddd6fe', design: 'hoodie' },
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:410:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+410                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:410:59 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+410                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:411:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+411                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:411:58 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+411                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:412:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+412                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:412:57 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+412                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:413:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+413                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:413:60 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+413                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:556:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+556                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:556:59 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+556                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:557:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+557                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:557:58 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+557                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:558:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+558                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:558:57 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+558                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:559:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+559                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:559:60 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+559                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:593:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+593                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:593:59 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+593                     { id: 'outfit-1', design: 'stripe' }, { id: 'outfit-2', design: 'dot-dress' },
+                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:594:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+594                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:594:58 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+594                     { id: 'outfit-3', design: 'check' }, { id: 'outfit-4', design: 'heart' },
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:595:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+595                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:595:57 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+595                     { id: 'outfit-5', design: 'star' }, { id: 'outfit-6', design: 'flower-dress' },
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:596:21 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+596                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/TodayFlareIndexNew.tsx:596:60 - error TS2739: Type '{ id: string; design: string; }' is missing the following properties from type 'CharacterItem': name, category, price, image
+
+596                     { id: 'outfit-7', design: 'sweater' }, { id: 'outfit-8', design: 'hoodie' },
+                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/flareDiaryAnalysis.ts:5:3 - error TS6133: 'FlareRecord' is declared but its value is never read.
+
+5   FlareRecord,
+    ~~~~~~~~~~~
+
+src/utils/flareDiaryAnalysis.ts:122:11 - error TS6133: 'flareDate' is declared but its value is never read.
+
+122     const flareDate = new Date(flare.date);
+              ~~~~~~~~~
+
+src/utils/gameSystem.ts:133:9 - error TS6133: 'gameData' is declared but its value is never read.
+
+133   const gameData = getGameData();
+            ~~~~~~~~
+
+src/utils/gameSystem.ts:134:9 - error TS6133: 'today' is declared but its value is never read.
+
+134   const today = new Date().toISOString().split('T')[0];
+            ~~~~~
+
+src/utils/lupusFlarePrediction.ts:24:9 - error TS6133: 'hour' is declared but its value is never read.
+
+24   const hour = new Date(date).getHours();
+           ~~~~
+
+src/utils/uvIndexHelper.ts:1:1 - error TS6133: 'UVIndexTimeSlot' is declared but its value is never read.
+
+1 import { UVIndexTimeSlot } from '../types';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/utils/weather/mockWeatherData.ts:8:1 - error TS6133: 'calculateWeatherIndex' is declared but its value is never read.
+
+8 import { calculateWeatherIndex } from './weatherIndexCalculator';
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Found 138 errors in 22 files.
+
+Errors  Files
+     1  src/App.tsx:8
+    52  src/App_backup.tsx:2
+     1  src/App_new.tsx:9
+     2  src/components/CharacterShopModal.tsx:2
+     3  src/components/CommunitySpace.tsx:2
+    12  src/components/DiseaseSpecificForms.tsx:2
+    12  src/components/EmotionalCare.tsx:3
+     1  src/components/EnvironmentalRisk.tsx:5
+     1  src/components/FigmaFourthPage.tsx:9
+     1  src/components/FigmaSecondPage.tsx:9
+     1  src/components/FigmaThirdPage.tsx:9
+     3  src/components/FlareDiary.tsx:2
+     1  src/components/FlareManagement.tsx:143
+     2  src/components/LupusForm.tsx:3
+     1  src/components/QuestModal.tsx:3
+     1  src/components/Results.tsx:134
+    36  src/components/TodayFlareIndexNew.tsx:7
+     2  src/utils/flareDiaryAnalysis.ts:5
+     2  src/utils/gameSystem.ts:133
+     1  src/utils/lupusFlarePrediction.ts:24
+     1  src/utils/uvIndexHelper.ts:1
+     1  src/utils/weather/mockWeatherData.ts:8
+PS C:\Users\user\.cursor> npm run build
+
+> autoimmune-symptom-checker@1.0.0 build
+> vite build
+
+The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.
+vite v5.4.21 building for production...
+✓ 1778 modules transformed.
+dist/index.html                   0.96 kB │ gzip:  0.60 kB
+dist/assets/index-KD20DW6G.css   65.80 kB │ gzip: 11.08 kB
+dist/assets/index-CdBu8OTt.js   265.61 kB │ gzip: 78.37 kB
+✓ built in 12.24s
+PS C:\Users\user\.cursor>

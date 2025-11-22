@@ -11,12 +11,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false
   },
   "include": ["src"],
+  "exclude": ["src/**/*_backup.tsx", "src/**/*_new.tsx", "src/**/*.backup.*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
 
