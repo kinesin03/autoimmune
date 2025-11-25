@@ -41,6 +41,4 @@ lerna-debug.log*
 projects/
 ide_state.json
 *.zip
-public/video
-public/character-video.mp4
 
