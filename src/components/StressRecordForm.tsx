@@ -8,7 +8,6 @@ interface Props {
 }
 
 const StressRecordForm: React.FC<Props> = ({ onAdd, onDelete, existingRecords }) => {
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [level, setLevel] = useState(5);
   const [note, setNote] = useState('');
 
@@ -16,13 +15,12 @@ const StressRecordForm: React.FC<Props> = ({ onAdd, onDelete, existingRecords })
     e.preventDefault();
     const record: StressRecord = {
       id: Date.now().toString(),
-      date,
+      date: new Date().toISOString().split('T')[0], // 오늘 날짜로 자동 설정
       level,
       note: note.trim() || undefined
     };
     onAdd(record);
     // 폼 초기화
-    setDate(new Date().toISOString().split('T')[0]);
     setLevel(5);
     setNote('');
   };
@@ -31,16 +29,6 @@ const StressRecordForm: React.FC<Props> = ({ onAdd, onDelete, existingRecords })
     <div className="record-form">
       <h3>스트레스 기록</h3>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>날짜</label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-
         <div className="form-group">
           <label>스트레스 수준 (0-10)</label>
           <input
@@ -66,16 +54,15 @@ const StressRecordForm: React.FC<Props> = ({ onAdd, onDelete, existingRecords })
         <button type="submit" className="btn btn-primary">기록 추가</button>
       </form>
 
-      <div className="existing-records">
+      <div className="existing-records" style={{ marginTop: '20px' }}>
         <h4>기존 기록</h4>
         {existingRecords.length === 0 ? (
           <p className="no-records">기록이 없습니다.</p>
         ) : (
-          <div className="records-list">
+          <div className="records-list" style={{ maxHeight: '300px', overflowY: 'auto', paddingBottom: '20px' }}>
             {existingRecords.map(record => (
               <div key={record.id} className="record-item">
                 <div className="record-info">
-                  <span className="record-date">{record.date}</span>
                   <span className="record-level">스트레스: {record.level}/10</span>
                   {record.note && (
                     <div className="record-note">{record.note}</div>

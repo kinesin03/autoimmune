@@ -1,13 +1,7 @@
 ---
-pid: 17776
+pid: 20936
 cwd: |
   C:\Users\user\.cursor
-active_command: |
-  git add .
-  git commit -m "Fix Vercel deployment errors"
-  git push
-last_command: git push -u origin main
-last_exit_code: 0
 ---
 PS C:\Users\user\.cursor> git remote remove origin
 >> git remote add origin https://github.com/kinesin03/.cursor.git
@@ -60,3 +54,31 @@ branch 'main' set up to track 'origin/main'.
 PS C:\Users\user\.cursor> git add .
 >> git commit -m "Fix Vercel deployment errors"
 >> git push
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/9.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/App.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/TodayFlareIndexNew.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'vercel.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'projects/c-Users-user-cursor/terminals/10.txt', LF will be replaced by CRLF the next time Git touches it
+[main 3589afa] Fix Vercel deployment errors
+ 10 files changed, 945 insertions(+), 22 deletions(-)
+ create mode 100644 .nvmrc
+ create mode 100644 VERCEL_DEPLOYMENT_FIX.md
+ create mode 100644 projects/c-Users-user-cursor/terminals/10.txt
+To https://github.com/kinesin03/autoimmune.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/kinesin03/autoimmune.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor>

@@ -2,6 +2,209 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* Flare-up 예측 카드 */
+.flare-prediction-card {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.card-header-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ede9fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card-icon {
+  color: #7c3aed;
+}
+
+.card-title-section {
+  flex: 1;
+}
+
+.card-main-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.card-sub-title {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.risk-display-section {
+  margin-bottom: 24px;
+}
+
+.expected-risk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.expected-risk-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.risk-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.risk-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.risk-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.risk-message {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 주간 위험도 그래프 */
+.weekly-risk-chart {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.week-days-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+}
+
+.day-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.day-bar {
+  width: 100%;
+  min-height: 20px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s;
+}
+
+.day-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* 위험 요인 분석 카드 */
+.risk-factors-card {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.risk-factors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.risk-factor-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.risk-factor-item.positive {
+  background: #d1fae5;
+}
+
+.risk-factor-item.warning {
+  background: #fef3c7;
+}
+
+.factor-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.risk-factor-item.positive .factor-icon {
+  color: #10b981;
+}
+
+.risk-factor-item.warning .factor-icon {
+  color: #f59e0b;
+}
+
+.factor-content {
+  flex: 1;
+}
+
+.factor-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.factor-detail {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 16px 0;
 }
 
 .no-data-message {
@@ -140,6 +343,11 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-left: 4px solid #667eea;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 360px;
+  overflow: visible;
+  margin: 0 auto;
 }
 
 .analysis-card h3 {
@@ -262,6 +470,157 @@
   margin: 3px 0;
   line-height: 1.5;
   color: #495057;
+}
+
+.disease-card {
+  border-left-color: #7c3aed;
+}
+
+.rheumatoid-card {
+  border-left-color: #ef4444;
+}
+
+.psoriasis-card {
+  border-left-color: #ec4899;
+}
+
+.crohn-card {
+  border-left-color: #1d4ed8;
+}
+
+.t1d-card {
+  border-left-color: #f97316;
+}
+
+.ms-card {
+  border-left-color: #6366f1;
+}
+
+.lupus-card {
+  border-left-color: #ec4899;
+}
+
+.sjogren-card {
+  border-left-color: #06b6d4;
+}
+
+.thyroid-card {
+  border-left-color: #f59e0b;
+}
+
+.disease-score-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.disease-score-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.disease-score-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.disease-score-value-large {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.disease-score-value span,
+.disease-score-value-large span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-left: 4px;
+}
+
+.disease-score-denominator {
+  font-size: 1.2rem !important;
+  color: #9ca3af !important;
+}
+
+.disease-risk-badge {
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+.disease-risk-badge.stable {
+  background: #10b981;
+}
+
+.disease-risk-badge.caution {
+  background: #f59e0b;
+}
+
+.disease-risk-badge.flare {
+  background: #ef4444;
+}
+
+.disease-message {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.disease-helper-text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.disease-driver-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.disease-driver-item {
+  background: #f9fafb;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.disease-driver-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.disease-driver-bar {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.disease-driver-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
+  border-radius: 999px;
+  transition: width 0.3s ease;
 }
 
 .data-summary {

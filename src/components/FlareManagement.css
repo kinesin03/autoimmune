@@ -4,6 +4,7 @@
   position: relative;
   box-sizing: border-box;
   overflow-x: hidden;
+  overflow-y: auto;
   background: linear-gradient(180deg, #7c3aed 0%, #ec4899 100%);
   min-height: 100vh;
 }
@@ -63,10 +64,13 @@
 .prediction-content-wrapper {
   background: white;
   border-radius: 24px 24px 0 0;
-  padding: 24px 20px 100px 20px;
+  padding: 24px 16px 120px 16px;
   margin-top: 0;
   min-height: calc(100vh - 100px);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 날짜 표시 박스 */
@@ -175,6 +179,7 @@
 
 .analysis-section {
   padding: 0;
+  overflow: visible;
 }
 
 /* 기존 폼 스타일 유지 */

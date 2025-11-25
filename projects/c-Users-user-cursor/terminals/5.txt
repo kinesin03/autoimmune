@@ -1,29 +1,9 @@
 ---
-pid: 33032
+pid: 23516
 cwd: |
   C:\Users\user\.cursor
 ---
-warning: in the working copy of 'src/components/FlareManagement.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FlareManagement.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'mcp.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/1.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/2.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/3.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/4.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/5.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'projects/c-Users-user-cursor/terminals/6.txt', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/AppNewDesign.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/App_backup.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/CommunitySpace.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaFourthPage.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaFourthPage.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntro.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntro.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntroSlide.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaIntroSlide.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaSecondPage.css', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaSecondPage.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'src/components/FigmaThirdPage.css', LF will be replaced by CRLF the next time Git touches it
+replaced by CRLF the next time Git touches it
 warning: in the working copy of 'src/components/FigmaThirdPage.tsx', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'src/components/IntroSlide1.css', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'src/components/IntroSlide1.tsx', LF will be replaced by CRLF the next time Git touches it
@@ -101,6 +81,15 @@ Total 75 (delta 24), reused 0 (delta 0), pack-reused 0 (from 0)
 remote: Resolving deltas: 100% (24/24), completed with 10 local objects.
 To https://github.com/kinesin03/autoimmune.git
    4346851..a6afadb  main -> main
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
 PS C:\Users\user\.cursor> 
  *  History restored 
 

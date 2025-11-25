@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Zap, CheckCircle2, AlertTriangle, Lightbulb, TrendingUp, Calendar, ArrowDown, ArrowUp } from 'lucide-react';
-import { FlareManagementData, FlareRecord, SleepRecord, StressReliefRoutine } from '../types';
-import { analyzeFlareRisk, analyzeSleepCorrelation, analyzeStressCorrelation, analyzeFoodCorrelation } from '../utils/flareAnalysis';
+import { Lightbulb, Calendar } from 'lucide-react';
+import { StressReliefRoutine } from '../types';
 import { trackActivity } from '../utils/gameSystem';
 import './EmotionalCare.css';
 
 const EmotionalCare: React.FC = () => {
-  const [flareData, setFlareData] = useState<FlareManagementData | null>(null);
-  const [riskAnalysis, setRiskAnalysis] = useState<any>(null);
-  const [weeklyRisk, setWeeklyRisk] = useState<number[]>([15, 12, 10, 25, 18, 15, 20]);
-  const [healthScore, setHealthScore] = useState(82);
-  const [lastWeekScore, setLastWeekScore] = useState(77);
   const [nextCheckup, setNextCheckup] = useState<string>('2025-12-01');
   const [activeRoutine, setActiveRoutine] = useState<StressReliefRoutine | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
@@ -96,76 +90,6 @@ const EmotionalCare: React.FC = () => {
     }
   ];
 
-  // 데이터 로드 및 분석
-  useEffect(() => {
-    const loadData = () => {
-      const saved = localStorage.getItem('flareManagementData');
-      const savedDaily = localStorage.getItem('dailyRecords');
-      
-      if (saved) {
-        try {
-          const data: FlareManagementData = JSON.parse(saved);
-          setFlareData(data);
-
-          // 분석 수행
-          const stressCorrelation = analyzeStressCorrelation(data.flares, data.stressRecords);
-          const foodCorrelations = analyzeFoodCorrelation(data.flares, data.foodRecords);
-          const sleepCorrelation = analyzeSleepCorrelation(data.flares, data.sleepRecords);
-          
-          const risk = analyzeFlareRisk({
-            ...data,
-            stressCorrelation,
-            foodCorrelations,
-            sleepCorrelation
-          });
-          setRiskAnalysis(risk);
-        } catch (e) {
-          console.error('Failed to load flare data:', e);
-        }
-      }
-
-      // 건강 점수 계산 (간단한 예시)
-      if (savedDaily) {
-        try {
-          const dailyRecords = JSON.parse(savedDaily);
-          // 건강 점수 계산 로직 (예시)
-          setHealthScore(82);
-        } catch (e) {
-          console.error('Failed to load daily records:', e);
-        }
-      }
-    };
-
-    loadData();
-  }, []);
-
-  // 예상 위험도 계산
-  const expectedRisk = riskAnalysis?.riskScore || 15;
-  const riskLevel = riskAnalysis?.riskLevel || 'low';
-  const riskLevelText = {
-    low: '낮음',
-    medium: '보통',
-    high: '높음',
-    critical: '매우 높음'
-  };
-  const riskLevelColor = {
-    low: '#10b981',
-    medium: '#f59e0b',
-    high: '#ef4444',
-    critical: '#dc2626'
-  };
-
-  // 약물 복용률 계산
-  const medicationAdherence = 100; // 예시
-  const avgSleepHours = 6.5; // 예시
-  const recommendedSleep = 7.5;
-
-  // 요일별 위험도 색상
-  const getRiskColor = (risk: number) => {
-    if (risk < 20) return '#10b981'; // 초록
-    if (risk < 30) return '#f59e0b'; // 노랑
-    return '#ef4444'; // 빨강
-  };
 
   const today = new Date().toISOString().split('T')[0];
   const todayFormatted = new Date().toLocaleDateString('ko-KR', {
@@ -252,7 +176,7 @@ const EmotionalCare: React.FC = () => {
       <div className="care-header">
         <div className="header-content">
           <div className="header-text-wrapper">
-            <h1 className="care-title">AI 케어</h1>
+            <h1 className="care-title">케어</h1>
             <p className="care-subtitle">맞춤형 건강 관리</p>
           </div>
         </div>
@@ -260,82 +184,6 @@ const EmotionalCare: React.FC = () => {
 
       {/* 콘텐츠 영역 - 흰색 박스 */}
       <div className="care-content-wrapper">
-        {/* Flare-up 예측 카드 */}
-        <div className="flare-prediction-card">
-          <div className="card-header-section">
-            <div className="card-icon-circle">
-              <Zap size={24} className="card-icon" />
-            </div>
-            <div className="card-title-section">
-              <h3 className="card-main-title">Flare-up 예측</h3>
-              <p className="card-sub-title">향후 7일 위험도</p>
-            </div>
-          </div>
-
-          <div className="risk-display-section">
-            <div className="expected-risk-header">
-              <span className="expected-risk-label">예상 위험도</span>
-              <span 
-                className="risk-badge"
-                style={{ background: riskLevelColor[riskLevel] }}
-              >
-                {riskLevelText[riskLevel]} ({expectedRisk}%)
-              </span>
-            </div>
-            <div className="risk-progress-bar">
-              <div 
-                className="risk-progress-fill"
-                style={{ 
-                  width: `${expectedRisk}%`,
-                  background: riskLevelColor[riskLevel]
-                }}
-              />
-            </div>
-            <p className="risk-message">
-              {riskAnalysis?.message || '현재 관리 패턴이 우수합니다. 이대로 유지하세요!'} 👍
-            </p>
-          </div>
-
-          {/* 주간 위험도 그래프 */}
-          <div className="weekly-risk-chart">
-            <div className="week-days-chart">
-              {['월', '화', '수', '목', '금', '토', '일'].map((day, idx) => (
-                <div key={idx} className="day-bar-container">
-                  <div 
-                    className="day-bar"
-                    style={{ 
-                      height: `${(weeklyRisk[idx] / 100) * 80}px`,
-                      background: getRiskColor(weeklyRisk[idx])
-                    }}
-                  />
-                  <span className="day-label">{day}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* 위험 요인 분석 카드 */}
-        <div className="risk-factors-card">
-          <h3 className="section-title">위험 요인 분석</h3>
-          <div className="risk-factors-grid">
-            <div className="risk-factor-item positive">
-              <CheckCircle2 size={24} className="factor-icon" />
-              <div className="factor-content">
-                <div className="factor-title">약물 복용 규칙적</div>
-                <div className="factor-detail">지난 7일 {medicationAdherence}% 복용</div>
-              </div>
-            </div>
-            <div className="risk-factor-item warning">
-              <AlertTriangle size={24} className="factor-icon" />
-              <div className="factor-content">
-                <div className="factor-title">수면 부족 주의</div>
-                <div className="factor-detail">평균 {avgSleepHours}시간 (권장: {recommendedSleep}-8시간)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* 맞춤 건강 조언 */}
         <div className="health-advice-card">
           <div className="advice-header">
@@ -377,44 +225,8 @@ const EmotionalCare: React.FC = () => {
           </div>
         </div>
 
-        {/* 건강 점수 및 검진 예정일 */}
+        {/* 검진 예정일 */}
         <div className="health-score-card">
-          <div className="score-section">
-            <div className="score-header">
-              <TrendingUp size={20} className="score-icon" />
-              <h3 className="section-title">트렌드 분석</h3>
-            </div>
-            <div className="overall-score">
-              <div className="score-label">전반적 건강 점수</div>
-              <div className="score-value">{healthScore}/100</div>
-              <div className="score-progress-bar">
-                <div 
-                  className="score-progress-fill"
-                  style={{ width: `${healthScore}%` }}
-                />
-              </div>
-              <div className="score-change">
-                지난주 대비 +{healthScore - lastWeekScore}점 향상
-              </div>
-            </div>
-            <div className="score-details">
-              <div className="score-detail-item">
-                <ArrowDown size={16} className="detail-icon positive" />
-                <div className="detail-content">
-                  <div className="detail-label">증상 빈도</div>
-                  <div className="detail-value positive">30% 감소</div>
-                </div>
-              </div>
-              <div className="score-detail-item">
-                <ArrowUp size={16} className="detail-icon positive" />
-                <div className="detail-content">
-                  <div className="detail-label">약물 순응도</div>
-                  <div className="detail-value positive">95% 달성</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="checkup-section">
             <div className="checkup-header">
               <Calendar size={20} className="checkup-icon" />

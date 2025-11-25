@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Home, BookHeart, BarChart3, Brain, Users } from 'lucide-react';
+import { Home, BookHeart, BarChart3, Brain, Users, Stethoscope } from 'lucide-react';
 import FigmaIntroSlide from './components/FigmaIntroSlide';
 import IntroSlide1 from './components/IntroSlide1';
 import IntroSlide2 from './components/IntroSlide2';
 import IntroSlide3 from './components/IntroSlide3';
+import IntroSlide4 from './components/IntroSlide4';
 import TodayFlareIndexNew from './components/TodayFlareIndexNew';
 import ProdromalFlarePredictionComponent from './components/ProdromalFlarePrediction';
 import FlareDiary from './components/FlareDiary';
@@ -16,10 +17,17 @@ import './App.css';
 import './AppNewDesign.css';
 
 function App() {
-  const [showFigmaIntro, setShowFigmaIntro] = useState(true);
+  // localStorage에서 인트로 완료 상태 확인
+  const [showFigmaIntro, setShowFigmaIntro] = useState(() => {
+    // 인트로를 항상 표시하도록 설정 (테스트용)
+    // const introCompleted = localStorage.getItem('introCompleted');
+    // return introCompleted !== 'true';
+    return true;
+  });
   const [showIntroSlide1, setShowIntroSlide1] = useState(false);
   const [showIntroSlide2, setShowIntroSlide2] = useState(false);
   const [showIntroSlide3, setShowIntroSlide3] = useState(false);
+  const [showIntroSlide4, setShowIntroSlide4] = useState(false);
   const [activeTab, setActiveTab] = useState<'today' | 'environment' | 'prodromal' | 'diary' | 'management' | 'emotional'>('today');
   const [gameData, setGameData] = useState(getGameData());
   const [diagnosisData] = useState<DiagnosisData>(() => {
@@ -114,7 +122,23 @@ function App() {
   if (showIntroSlide3) {
     return renderWithPhoneFrame(
       <IntroSlide3 
-        onNext={() => setShowIntroSlide3(false)} 
+        onNext={() => {
+          console.log('IntroSlide3 onNext called');
+          setShowIntroSlide3(false);
+          setShowIntroSlide4(true);
+        }} 
+      />
+    );
+  }
+
+  if (showIntroSlide4) {
+    return renderWithPhoneFrame(
+      <IntroSlide4 
+        onNext={() => {
+          console.log('IntroSlide4 onNext called');
+          localStorage.setItem('introCompleted', 'true');
+          setShowIntroSlide4(false);
+        }} 
       />
     );
   }
@@ -122,17 +146,29 @@ function App() {
   const bottomNavTabs = [
     { id: 'today' as const, label: '홈', icon: Home },
     { id: 'diary' as const, label: '일지', icon: BookHeart },
-    { id: 'management' as const, label: '분석', icon: BarChart3 },
-    { id: 'emotional' as const, label: 'AI케어', icon: Brain },
+    { id: 'management' as const, label: 'AI분석', icon: Brain },
+    { id: 'emotional' as const, label: '케어', icon: Stethoscope },
     { id: 'environment' as const, label: '커뮤니티', icon: Users }
   ];
 
   return renderWithPhoneFrame(
-    <div className="app-new-design">
+    <div className="app-new-design" style={{ height: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       {activeTab === 'today' && (
         <div className="app-top-header">
           <div className="greeting-section">
             <h2 className="greeting-text">안녕하세요 꿈돌이님</h2>
+            {(() => {
+              const savedDiseases = localStorage.getItem('userDiseases');
+              const diseases = savedDiseases ? JSON.parse(savedDiseases) : [];
+              if (diseases.length > 0) {
+                return (
+                  <p className="user-diseases">
+                    {diseases.join(', ')}
+                  </p>
+                );
+              }
+              return null;
+            })()}
           </div>
           <div className="header-icons">
             <div className="coin-display">
@@ -144,7 +180,7 @@ function App() {
         </div>
       )}
 
-      <div className="app-content">
+      <div className="app-content" style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', paddingBottom: '80px' }}>
         {activeTab === 'today' && <TodayFlareIndexNew diagnosisData={diagnosisData} />}
         {activeTab === 'environment' && <CommunitySpace />}
         {activeTab === 'prodromal' && <ProdromalFlarePredictionComponent diagnosisData={diagnosisData} />}

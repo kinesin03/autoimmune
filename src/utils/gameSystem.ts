@@ -18,7 +18,7 @@ export interface GameData {
 }
 
 const DEFAULT_GAME_DATA: GameData = {
-  coins: 1250,
+  coins: 10000,
   characterLevel: 12,
   characterExp: 180,
   characterExpMax: 300,
@@ -32,7 +32,13 @@ export function getGameData(): GameData {
   const saved = localStorage.getItem('gameData');
   if (saved) {
     try {
-      return { ...DEFAULT_GAME_DATA, ...JSON.parse(saved) };
+      const savedData = JSON.parse(saved);
+      // 기존 데이터가 있으면 코인을 추가 (최소 10000으로 보장)
+      if (savedData.coins < 10000) {
+        savedData.coins = Math.max(savedData.coins + 8750, 10000);
+        saveGameData(savedData);
+      }
+      return { ...DEFAULT_GAME_DATA, ...savedData };
     } catch (e) {
       console.error('Failed to load game data:', e);
     }

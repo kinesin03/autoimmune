@@ -1,5 +1,5 @@
 ---
-pid: 7924
+pid: 6996
 cwd: |
   C:\Users\user\.cursor
 ---
@@ -20,6 +20,15 @@ Untracked files:
         projects/c-Users-user-cursor/terminals/7.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
 PS C:\Users\user\.cursor> 
  *  History restored 
 

@@ -122,3 +122,6 @@ git push
 - [ ] Redirects 설정 확인됨
 
 
+
+
+

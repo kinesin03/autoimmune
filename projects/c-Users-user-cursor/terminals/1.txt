@@ -1,5 +1,5 @@
 ---
-pid: 14132
+pid: 11812
 cwd: |
   C:\Users\user\.cursor
 ---
@@ -77,6 +77,15 @@ or\node_modules\@babel\parser\lib\index.js:10895:21)
 오후 11:13:05 [vite] hmr update /src/components/EmotionalCare.css (x3)
 오후 11:13:19 [vite] hmr update /src/components/EmotionalCare.css (x오후 11:13:19 [vite] hmr update /src/components/EmotionalCare.css (x4)
 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
  *  History restored 
 
 PS C:\Users\user\.cursor> 

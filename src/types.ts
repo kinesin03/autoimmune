@@ -316,7 +316,7 @@ export interface CommunityPost {
 export interface CharacterItem {
   id: string;
   name: string;
-  category: 'outfit' | 'accessory' | 'background';
+  category: 'outfit' | 'accessory' | 'background' | 'prop';
   price: number;
   image: string; // 이모지 또는 이미지 URL
   description?: string;
@@ -330,6 +330,7 @@ export interface CharacterCustomization {
   outfit?: string; // 아이템 ID
   accessory?: string; // 아이템 ID
   background?: string; // 아이템 ID
+  prop?: string; // 소품 ID
   ownedItems: string[]; // 보유한 아이템 ID 목록
 }
 

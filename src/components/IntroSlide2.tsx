@@ -9,10 +9,6 @@ interface IntroSlide2Props {
 const IntroSlide2: React.FC<IntroSlide2Props> = ({ onNext, onSkip }) => {
   return (
     <div className="intro-slide-2">
-      <button className="skip-button" onClick={onSkip}>
-        건너뛰기
-      </button>
-      
       <div className="slide-content">
         <div className="icon-container">
           <div className="icon-gradient-circle">

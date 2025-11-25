@@ -1,5 +1,5 @@
 ---
-pid: 33020
+pid: 2964
 cwd: |
   C:\Users\user\.cursor
 ---
@@ -33,6 +33,15 @@ de : 'de' 용어가 cmdlet, 함수, 스크립트 파일 또는 실행할 수 있
     + CategoryInfo          : ObjectNotFound: (de:String) [], CommandNotFoundException
     + FullyQualifiedErrorId : CommandNotFoundException
  
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
 PS C:\Users\user\.cursor> 
  *  History restored 
 

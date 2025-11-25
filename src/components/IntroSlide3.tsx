@@ -6,6 +6,13 @@ interface IntroSlide3Props {
 }
 
 const IntroSlide3: React.FC<IntroSlide3Props> = ({ onNext }) => {
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('시작하기 버튼 클릭됨');
+    onNext();
+  };
+
   return (
     <div className="intro-slide-3">
       <div className="slide-content">
@@ -31,7 +38,7 @@ const IntroSlide3: React.FC<IntroSlide3Props> = ({ onNext }) => {
           <div className="dot active"></div>
         </div>
         
-        <button className="next-button" onClick={onNext}>
+        <button className="next-button" onClick={handleNext} type="button">
           시작하기
         </button>
       </div>

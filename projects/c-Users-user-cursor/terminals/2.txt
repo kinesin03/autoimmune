@@ -1,15 +1,9 @@
 ---
-pid: 13508
+pid: 9892
 cwd: |
   C:\Users\user\.cursor
 ---
-\.cursor\node_modules\@babel\parser\lib\index.js:11733:14)
-      at TypeScriptParserMixin.parseExprAtom (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11395:23)
-      at TypeScriptParserMixin.parseExprAtom (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:4793:20)
-      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11145:23)
-      at TypeScriptParserMixin.parseUpdate (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11130:21)
-      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:11110:23)
-      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:9890:18)
+es\@babel\parser\lib\index.js:9890:18)
       at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10963:61)        
       at TypeScriptParserMixin.parseExprOps (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10968:23)
       at TypeScriptParserMixin.parseMaybeConditional (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:10945:23)
@@ -50,6 +44,15 @@ cwd: |
       at parse (C:\Users\user\.cursor\node_modules\@babel\parser\lib\index.js:14602:38)
       at parser (C:\Users\user\.cursor\node_modules\@babel\core\lib\parser\index.js:41:34)
 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
+ *  History restored 
+
+PS C:\Users\user\.cursor> 
  *  History restored 
 
 PS C:\Users\user\.cursor> 

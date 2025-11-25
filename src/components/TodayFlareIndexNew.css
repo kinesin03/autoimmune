@@ -171,20 +171,56 @@
   gap: 16px;
   align-items: flex-start;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-50%) translateY(0);
+  }
+  50% {
+    transform: translateY(-50%) translateY(-10px);
+  }
+}
+
+.character-prop {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.character-image-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: visible;
 }
 
 .character-image {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
   margin: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+.character-background-layer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background: #ffffff;
 }
 
 .character-illustration {
@@ -197,10 +233,42 @@
   z-index: 1;
 }
 
-.character-svg {
+.character-video {
   width: 100%;
   height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background: transparent;
+}
+
+
+.character-background-layer {
+  transition: all 0.3s ease;
+}
+
+.character-outfit-overlay {
+  user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.character-accessory-overlay {
+  user-select: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.character-svg {
+  width: 120px;
+  height: 120px;
+  max-width: 100%;
+  max-height: 100%;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.character-video {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: transparent;
 }
 
 .star-icon {

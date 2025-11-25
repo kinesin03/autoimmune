@@ -37,4 +37,10 @@ lerna-debug.log*
 *_new.tsx
 *.backup.*
 
+# Project specific
+projects/
+ide_state.json
+*.zip
+public/video
+public/character-video.mp4
 

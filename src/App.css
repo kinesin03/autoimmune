@@ -59,10 +59,15 @@ body {
   height: 100%;
   background: white;
   border-radius: 32px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-screen > * {
+  position: relative;
 }
 
 @keyframes phoneAppear {
