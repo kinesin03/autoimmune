@@ -19,7 +19,7 @@ const FlareManagement: React.FC = () => {
     sleepRecords: [],
     foodCorrelations: []
   });
-
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // 로컬 스토리지에서 데이터 로드
   useEffect(() => {
@@ -32,6 +32,47 @@ const FlareManagement: React.FC = () => {
         console.error('Failed to load saved data:', e);
       }
     }
+  }, []);
+
+  // 증상일지 데이터 변경 감지 및 강제 리프레시
+  useEffect(() => {
+    const checkForUpdates = () => {
+      const records = localStorage.getItem('prodromalSymptomRecords');
+      const diseases = localStorage.getItem('userDiseases');
+      if (records || diseases) {
+        console.log('Detected data change, refreshing analysis');
+        setRefreshKey(prev => prev + 1);
+      }
+    };
+
+    // 초기 체크
+    checkForUpdates();
+
+    // 커스텀 이벤트 리스너
+    const handleUpdate = () => {
+      console.log('Custom event received, refreshing');
+      setTimeout(checkForUpdates, 100);
+    };
+
+    // storage 이벤트 리스너 (다른 탭)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'prodromalSymptomRecords' || e.key === 'userDiseases') {
+        console.log('Storage event received, refreshing');
+        setTimeout(checkForUpdates, 100);
+      }
+    };
+
+    window.addEventListener('prodromalSymptomRecordsUpdated', handleUpdate);
+    window.addEventListener('storage', handleStorageChange);
+
+    // 주기적으로 체크 (매 2초)
+    const interval = setInterval(checkForUpdates, 2000);
+
+    return () => {
+      window.removeEventListener('prodromalSymptomRecordsUpdated', handleUpdate);
+      window.removeEventListener('storage', handleStorageChange);
+      clearInterval(interval);
+    };
   }, []);
 
   // 데이터 변경 시 분석 및 저장
@@ -98,7 +139,7 @@ const FlareManagement: React.FC = () => {
       <div className="prediction-content-wrapper">
         {/* 분석 결과 - 상단 배치 */}
         <div className="analysis-section">
-          <FlareAnalysisResults data={data} />
+          <FlareAnalysisResults key={refreshKey} data={data} />
         </div>
       </div>
     </div>

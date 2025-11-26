@@ -59,7 +59,7 @@ interface ProdromalSymptomRecord {
     fatigue?: number; // 피로감 (0-10)
     bodyTemperature?: number; // 체온 (34.5-40.0)
     bodyAche?: number; // 몸살 (0-10)
-    // 전신적 변화
+    // 정신적 변화
     anxiety?: number; // 불안감 (0-10)
     depression?: number; // 우울감 (0-10)
     stress?: number; // 스트레스 (0-10)
@@ -1791,7 +1791,7 @@ const ProdromalSymptomDiary: React.FC<{
     fatigue: todayRecord?.commonSymptoms?.fatigue ?? 0,
     bodyTemperature: todayRecord?.commonSymptoms?.bodyTemperature ?? 36.5,
     bodyAche: todayRecord?.commonSymptoms?.bodyAche ?? 0,
-    // 전신적 변화
+    // 정신적 변화
     anxiety: todayRecord?.commonSymptoms?.anxiety ?? 0,
     depression: todayRecord?.commonSymptoms?.depression ?? 0,
     stress: todayRecord?.commonSymptoms?.stress ?? 0,
@@ -1850,32 +1850,52 @@ const ProdromalSymptomDiary: React.FC<{
   }, [today, prodromalRecords]);
 
   const saveRecord = () => {
+    // commonSymptoms 객체 생성 (값이 있으면 저장, 없으면 undefined)
+    const commonSymptomsData: any = {};
+    if (commonSymptoms.fatigue > 0) commonSymptomsData.fatigue = commonSymptoms.fatigue;
+    if (commonSymptoms.bodyTemperature !== 36.5) commonSymptomsData.bodyTemperature = commonSymptoms.bodyTemperature;
+    if (commonSymptoms.bodyAche > 0) commonSymptomsData.bodyAche = commonSymptoms.bodyAche;
+    if (commonSymptoms.anxiety > 0) commonSymptomsData.anxiety = commonSymptoms.anxiety;
+    if (commonSymptoms.depression > 0) commonSymptomsData.depression = commonSymptoms.depression;
+    if (commonSymptoms.stress > 0) commonSymptomsData.stress = commonSymptoms.stress;
+    if (commonSymptoms.sleepDisorder > 0) commonSymptomsData.sleepDisorder = commonSymptoms.sleepDisorder;
+    if (commonSymptoms.appetiteLoss > 0) commonSymptomsData.appetiteLoss = commonSymptoms.appetiteLoss;
+    if (commonSymptoms.abdominalPain > 0) commonSymptomsData.abdominalPain = commonSymptoms.abdominalPain;
+    if (commonSymptoms.jointPain > 0) commonSymptomsData.jointPain = commonSymptoms.jointPain;
+    if (commonSymptoms.functionalDecline > 0) commonSymptomsData.functionalDecline = commonSymptoms.functionalDecline;
+    if (commonSymptoms.skinPain > 0) commonSymptomsData.skinPain = commonSymptoms.skinPain;
+    if (commonSymptoms.itching > 0) commonSymptomsData.itching = commonSymptoms.itching;
+
+    // 최소한 하나의 값이라도 있어야 저장
+    const hasCommonSymptoms = Object.keys(commonSymptomsData).length > 0;
+    const hasDiseaseSpecific = Object.keys(diseaseSpecific).length > 0;
+
+    if (!hasCommonSymptoms && !hasDiseaseSpecific) {
+      alert('최소한 하나의 증상을 입력해주세요.');
+      return;
+    }
+
     const record: ProdromalSymptomRecord = {
       id: todayRecord?.id || Date.now().toString(),
       date: today,
-      commonSymptoms: {
-        fatigue: commonSymptoms.fatigue > 0 ? commonSymptoms.fatigue : undefined,
-        bodyTemperature: commonSymptoms.bodyTemperature !== 36.5 ? commonSymptoms.bodyTemperature : undefined,
-        bodyAche: commonSymptoms.bodyAche > 0 ? commonSymptoms.bodyAche : undefined,
-        anxiety: commonSymptoms.anxiety > 0 ? commonSymptoms.anxiety : undefined,
-        depression: commonSymptoms.depression > 0 ? commonSymptoms.depression : undefined,
-        stress: commonSymptoms.stress > 0 ? commonSymptoms.stress : undefined,
-        sleepDisorder: commonSymptoms.sleepDisorder > 0 ? commonSymptoms.sleepDisorder : undefined,
-        appetiteLoss: commonSymptoms.appetiteLoss > 0 ? commonSymptoms.appetiteLoss : undefined,
-        abdominalPain: commonSymptoms.abdominalPain > 0 ? commonSymptoms.abdominalPain : undefined,
-        jointPain: commonSymptoms.jointPain > 0 ? commonSymptoms.jointPain : undefined,
-        functionalDecline: commonSymptoms.functionalDecline > 0 ? commonSymptoms.functionalDecline : undefined,
-        skinPain: commonSymptoms.skinPain > 0 ? commonSymptoms.skinPain : undefined,
-        itching: commonSymptoms.itching > 0 ? commonSymptoms.itching : undefined,
-      },
-      diseaseSpecific: Object.keys(diseaseSpecific).length > 0 ? diseaseSpecific : undefined
+      commonSymptoms: hasCommonSymptoms ? commonSymptomsData : undefined,
+      diseaseSpecific: hasDiseaseSpecific ? diseaseSpecific : undefined
     };
 
     const updated = [...prodromalRecords.filter(r => r.date !== today), record];
     setProdromalRecords(updated);
     localStorage.setItem('prodromalSymptomRecords', JSON.stringify(updated));
     
-    // 저장 후 알림 (선택사항)
+    console.log('Saved prodromal record:', record);
+    console.log('All records:', updated);
+    
+    // AI 분석 컴포넌트에 업데이트 알림 (CustomEvent 사용)
+    const event = new CustomEvent('prodromalSymptomRecordsUpdated', { 
+      detail: { record, allRecords: updated } 
+    });
+    window.dispatchEvent(event);
+    
+    // 저장 후 알림
     alert('기록이 저장되었습니다.');
   };
 
@@ -2576,10 +2596,10 @@ const ProdromalSymptomDiary: React.FC<{
             </div>
           </div>
 
-          {/* 2. 전신적 변화 */}
+          {/* 2. 정신적 변화 */}
           <div className="symptom-category-card" style={{ padding: '16px', background: '#f9fafb', borderRadius: '12px', border: '1px solid #e5e7eb' }}>
             <h4 style={{ fontSize: '1rem', fontWeight: '700', marginBottom: '12px', color: '#1f2937' }}>
-              2. 전신적 변화
+              2. 정신적 변화
             </h4>
             <div className="form-group" style={{ marginBottom: '16px' }}>
               <label style={{ fontSize: '0.9rem', fontWeight: '600', marginBottom: '8px', display: 'block' }}>불안감 (0-10)</label>
