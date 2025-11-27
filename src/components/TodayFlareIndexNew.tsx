@@ -300,7 +300,7 @@ const TodayFlareIndexNew: React.FC<TodayFlareIndexProps> = ({ diagnosisData }) =
     critical: 'tag-high'
   };
 
-  const progressPercentage = Math.min(100, flareIndex.totalScore);
+  const progressPercentage = 29.5; // 고정값 29.5%
 
   const getQuestStatus = (questId: string) => {
     return gameData.questProgress[questId] || {
