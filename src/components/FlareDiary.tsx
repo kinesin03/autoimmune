@@ -394,6 +394,10 @@ const FlareDiary: React.FC = () => {
     }
     flareData.stressRecords = updated;
     localStorage.setItem('flareManagementData', JSON.stringify(flareData));
+    
+    // 스트레스 기록 업데이트 이벤트 발생
+    window.dispatchEvent(new CustomEvent('stressRecordsUpdated'));
+    
     trackActivity('diary');
   };
 
@@ -414,6 +418,9 @@ const FlareDiary: React.FC = () => {
     }
     flareData.stressRecords = updated;
     localStorage.setItem('flareManagementData', JSON.stringify(flareData));
+    
+    // 스트레스 기록 업데이트 이벤트 발생
+    window.dispatchEvent(new CustomEvent('stressRecordsUpdated'));
   };
 
 

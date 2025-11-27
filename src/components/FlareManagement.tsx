@@ -23,20 +23,48 @@ const FlareManagement: React.FC = () => {
 
   // 로컬 스토리지에서 데이터 로드
   useEffect(() => {
-    const saved = localStorage.getItem('flareManagementData');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setData(parsed);
-      } catch (e) {
-        console.error('Failed to load saved data:', e);
+    const loadData = () => {
+      const saved = localStorage.getItem('flareManagementData');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          setData(parsed);
+        } catch (e) {
+          console.error('Failed to load saved data:', e);
+        }
       }
-    }
+    };
+    
+    loadData();
+    
+    // 컴포넌트가 포커스를 받을 때마다 데이터 다시 로드
+    const handleFocus = () => {
+      loadData();
+    };
+    
+    window.addEventListener('focus', handleFocus);
+    
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   // 증상일지 데이터 변경 감지 및 강제 리프레시
   useEffect(() => {
     const checkForUpdates = () => {
+      // 스트레스 기록도 함께 확인
+      const saved = localStorage.getItem('flareManagementData');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.stressRecords) {
+            setData(prev => ({ ...prev, stressRecords: parsed.stressRecords }));
+          }
+        } catch (e) {
+          console.error('Failed to load stress records:', e);
+        }
+      }
+      
       const records = localStorage.getItem('prodromalSymptomRecords');
       const diseases = localStorage.getItem('userDiseases');
       if (records || diseases) {
@@ -53,16 +81,23 @@ const FlareManagement: React.FC = () => {
       console.log('Custom event received, refreshing');
       setTimeout(checkForUpdates, 100);
     };
+    
+    // 스트레스 기록 업데이트 이벤트 리스너
+    const handleStressUpdate = () => {
+      console.log('Stress records updated, refreshing');
+      setTimeout(checkForUpdates, 100);
+    };
 
     // storage 이벤트 리스너 (다른 탭)
     const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'prodromalSymptomRecords' || e.key === 'userDiseases') {
+      if (e.key === 'flareManagementData' || e.key === 'prodromalSymptomRecords' || e.key === 'userDiseases') {
         console.log('Storage event received, refreshing');
         setTimeout(checkForUpdates, 100);
       }
     };
 
     window.addEventListener('prodromalSymptomRecordsUpdated', handleUpdate);
+    window.addEventListener('stressRecordsUpdated', handleStressUpdate);
     window.addEventListener('storage', handleStorageChange);
 
     // 주기적으로 체크 (매 2초)
@@ -70,6 +105,7 @@ const FlareManagement: React.FC = () => {
 
     return () => {
       window.removeEventListener('prodromalSymptomRecordsUpdated', handleUpdate);
+      window.removeEventListener('stressRecordsUpdated', handleStressUpdate);
       window.removeEventListener('storage', handleStorageChange);
       clearInterval(interval);
     };
