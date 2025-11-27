@@ -183,8 +183,8 @@
 .next-button {
   width: 100%;
   padding: 16px 24px;
-  background: white;
-  color: #7c3aed;
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 100%);
+  color: white;
   border: none;
   border-radius: 12px;
   font-size: 1rem;
@@ -194,15 +194,14 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.35);
   transition: all 0.3s;
   margin-top: auto;
 }
 
 .next-button:hover {
-  background: #f3f4f6;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 32px rgba(124, 58, 237, 0.4);
 }
 
 .next-button:active {
