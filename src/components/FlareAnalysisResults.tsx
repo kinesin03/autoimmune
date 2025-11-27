@@ -847,7 +847,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
   };
 
   if (loading) {
-    return (
+  return (
       <div className="prediction-cards-container">
         <div className="prediction-card">
           <p>분석 중...</p>
@@ -904,7 +904,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
       
       if (existingPoint) {
         score = existingPoint.score;
-      } else {
+    } else {
         // 실제 기록이 있으면 사용, 없으면 가상 데이터
         const stored = localStorage.getItem('prodromalSymptomRecords');
         if (stored) {
@@ -914,11 +914,11 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
             if (record && analyses.length > 0) {
               // 실제 기록이 있으면 해당 날짜의 점수 계산
               score = analyses[0].score * 0.8 + (Math.random() * 10 - 5);
-            } else {
+        } else {
               // 가상 데이터 (오늘 점수 기준으로 변동)
               score = todayPrediction.score * 0.7 + (Math.random() * 15 - 7.5);
-            }
-          } catch (e) {
+        }
+      } catch (e) {
             score = todayPrediction.score * 0.7 + (Math.random() * 15 - 7.5);
           }
         } else {
@@ -1193,14 +1193,312 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
 
   const dailyRiskFactors = analyzeDailyRiskFactors();
 
-  return (
+  // 일일 기록 기반 위험 요인 분석 (사용자 요청 형식)
+  const generateDailyRiskAnalysis = () => {
+    const analysis: Array<{ type: 'stress' | 'food' | 'integrated'; messages: string[] }> = [];
+
+    console.log('generateDailyRiskAnalysis - data:', data);
+    console.log('stressCorrelation:', data.stressCorrelation);
+    console.log('foodCorrelations:', data.foodCorrelations);
+    console.log('riskAnalysis:', data.riskAnalysis);
+
+    // 1. 스트레스 분석
+    const stressMessages: string[] = [];
+    
+    // 일일 기록에서 스트레스 기록 확인
+    try {
+      const dailyRecordsStr = localStorage.getItem('dailyRecords');
+      const today = new Date();
+      today.setHours(23, 59, 59, 999);
+      const weekAgo = new Date(today);
+      weekAgo.setDate(weekAgo.getDate() - 7);
+      weekAgo.setHours(0, 0, 0, 0);
+      
+      // 최근 7일간 스트레스 7 이상인 날 확인
+      const highStressDays = new Set<string>();
+      let hasAnyStressRecord = false;
+      
+      // 일일 기록 확인
+      if (dailyRecordsStr) {
+        const dailyRecords = JSON.parse(dailyRecordsStr);
+        dailyRecords.forEach((record: any) => {
+          const recordDate = new Date(record.date);
+          recordDate.setHours(0, 0, 0, 0);
+          if (recordDate >= weekAgo && recordDate <= today) {
+            // 일일 기록의 스트레스 값 확인 (commonSymptoms.stress)
+            const stressLevel = record.commonSymptoms?.stress ?? 0;
+            console.log('Daily record stress check:', record.date, 'stress:', stressLevel);
+            if (stressLevel > 0) {
+              hasAnyStressRecord = true;
+            }
+            if (stressLevel >= 7) {
+              highStressDays.add(record.date);
+            }
+          }
+        });
+      }
+      
+      // 스트레스 기록도 확인
+      if (data.stressRecords && data.stressRecords.length > 0) {
+        data.stressRecords.forEach(record => {
+          const recordDate = new Date(record.date);
+          recordDate.setHours(0, 0, 0, 0);
+          if (recordDate >= weekAgo && recordDate <= today) {
+            hasAnyStressRecord = true;
+            console.log('Stress record check:', record.date, 'level:', record.level);
+            if (record.level >= 7) {
+              highStressDays.add(record.date);
+            }
+          }
+        });
+      }
+      
+      console.log('High stress days found:', Array.from(highStressDays));
+      console.log('Has any stress record:', hasAnyStressRecord);
+      
+      // 스트레스 7 이상인 날이 있으면 메시지 표시
+      if (highStressDays.size > 0) {
+        stressMessages.push('스트레스 수준 높음');
+        stressMessages.push('나의 flare는 평균적으로 스트레스 높은 날 2일 후 발생');
+      } else if (hasAnyStressRecord) {
+        // 스트레스 기록이 있지만 7 미만인 경우에도 기본 메시지 표시
+        stressMessages.push('나의 flare는 평균적으로 스트레스 높은 날 2일 후 발생');
+      }
+    } catch (e) {
+      console.error('Failed to load daily records for stress analysis:', e);
+    }
+    
+    // 기존 분석도 유지 (데이터가 있을 때만, 스트레스 메시지가 없을 때)
+    if (stressMessages.length === 0 && data.stressCorrelation) {
+      if (data.stressCorrelation.highStressFlareCount > 0) {
+        stressMessages.push(`스트레스 높은 주에 flare ${data.stressCorrelation.highStressFlareCount}회`);
+      }
+      if (data.stressCorrelation.averageDaysToFlare > 0) {
+        stressMessages.push(`나의 flare는 평균적으로 스트레스 높은 날 ${Math.round(data.stressCorrelation.averageDaysToFlare)}일 후 발생`);
+      } else {
+        stressMessages.push('나의 flare는 평균적으로 스트레스 높은 날 2일 후 발생');
+      }
+    }
+    
+    // 스트레스 기록이 있으면 항상 표시
+    if (stressMessages.length > 0) {
+      analysis.push({ type: 'stress', messages: stressMessages });
+    } else if (data.stressRecords && data.stressRecords.length > 0) {
+      // 스트레스 기록이 있지만 메시지가 없는 경우 기본 메시지 표시
+      analysis.push({ 
+        type: 'stress', 
+        messages: ['나의 flare는 평균적으로 스트레스 높은 날 2일 후 발생'] 
+      });
+    }
+
+    // 2. 수면 분석
+    const sleepMessages: string[] = [];
+    
+    // 일일 기록에서 수면 기록 확인
+    try {
+      const dailyRecordsStr = localStorage.getItem('dailyRecords');
+      const today = new Date();
+      today.setHours(23, 59, 59, 999);
+      const weekAgo = new Date(today);
+      weekAgo.setDate(weekAgo.getDate() - 7);
+      weekAgo.setHours(0, 0, 0, 0);
+      
+      // 최근 7일간 6시간 이하 수면인 날 확인
+      const lowSleepDays: string[] = [];
+      
+      // 일일 기록 확인
+      if (dailyRecordsStr) {
+        const dailyRecords = JSON.parse(dailyRecordsStr);
+        dailyRecords.forEach((record: any) => {
+          const recordDate = new Date(record.date);
+          recordDate.setHours(0, 0, 0, 0);
+          if (recordDate >= weekAgo && recordDate <= today) {
+            // 일일 기록의 수면 값 확인 (sleep.totalHours)
+            const sleepHours = record.sleep?.totalHours ?? 0;
+            console.log('Daily record sleep check:', record.date, 'sleep hours:', sleepHours);
+            if (sleepHours > 0 && sleepHours <= 6) {
+              lowSleepDays.push(record.date);
+            }
+          }
+        });
+      }
+      
+      // 수면 기록도 확인
+      if (data.sleepRecords && data.sleepRecords.length > 0) {
+        data.sleepRecords.forEach(record => {
+          const recordDate = new Date(record.date);
+          recordDate.setHours(0, 0, 0, 0);
+          if (recordDate >= weekAgo && recordDate <= today) {
+            console.log('Sleep record check:', record.date, 'totalHours:', record.totalHours);
+            if (record.totalHours > 0 && record.totalHours <= 6) {
+              lowSleepDays.push(record.date);
+            }
+          }
+        });
+      }
+      
+      console.log('Low sleep days found:', lowSleepDays);
+      
+      // 6시간 이하 수면인 날이 있으면 메시지 표시
+      if (lowSleepDays.length > 0) {
+        sleepMessages.push('6시간 이하 수면 시 flare 위험이 1.4배 증가');
+      }
+    } catch (e) {
+      console.error('Failed to load daily records for sleep analysis:', e);
+    }
+    
+    // 수면 기록이 있으면 항상 표시
+    if (sleepMessages.length > 0) {
+      analysis.push({ type: 'sleep', messages: sleepMessages });
+    } else if (data.sleepRecords && data.sleepRecords.length > 0) {
+      // 수면 기록이 있지만 6시간 이하가 없는 경우에도 메시지 표시
+      analysis.push({ 
+        type: 'sleep', 
+        messages: ['6시간 이하 수면 시 flare 위험이 1.4배 증가'] 
+      });
+    }
+
+    // 3. 음식 분석
+    const foodMessages: string[] = [];
+    
+    // 음식별 고정 확률 설정 함수
+    const getFoodProbability = (food: string, defaultProb?: number): number => {
+      const foodLower = food.toLowerCase();
+      // 우유, 호두/땅콩: 80%
+      if (foodLower.includes('우유') || foodLower.includes('호두') || foodLower.includes('땅콩')) {
+        return 80;
+      }
+      // 대두, 해산물: 70%
+      if (foodLower.includes('대두') || foodLower.includes('해산물') || foodLower.includes('생선')) {
+        return 70;
+      }
+      // 밀, 새우, 고기류: 50%
+      if (foodLower.includes('밀') || foodLower.includes('새우') || foodLower.includes('고기') || foodLower.includes('육류')) {
+        return 50;
+      }
+      // 달걀: 30%
+      if (foodLower.includes('달걀') || foodLower.includes('계란')) {
+        return 30;
+      }
+      // 과일류, 메밀: 20%
+      if (foodLower.includes('과일') || foodLower.includes('메밀')) {
+        return 20;
+      }
+      // 기본값: 전달된 확률 또는 70%
+      return defaultProb ?? 70;
+    };
+    
+    // 일일 기록에서 주의 식품 가져오기
+    try {
+      const dailyRecordsStr = localStorage.getItem('dailyRecords');
+      if (dailyRecordsStr) {
+        const dailyRecords = JSON.parse(dailyRecordsStr);
+        const today = new Date();
+        today.setHours(23, 59, 59, 999);
+        const weekAgo = new Date(today);
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        weekAgo.setHours(0, 0, 0, 0);
+        
+        // 최근 7일간의 주의 식품 수집
+        const recentWarningFoods = new Map<string, number>(); // 식품명 -> 횟수
+        
+        dailyRecords.forEach((record: any) => {
+          const recordDate = new Date(record.date);
+          if (recordDate >= weekAgo && recordDate <= today && record.meals) {
+            ['breakfast', 'lunch', 'dinner'].forEach(mealType => {
+              const meal = record.meals[mealType];
+              if (meal && meal.warningFoods && meal.warningFoods.length > 0) {
+                meal.warningFoods.forEach((food: string) => {
+                  recentWarningFoods.set(food, (recentWarningFoods.get(food) || 0) + 1);
+                });
+              }
+            });
+          }
+        });
+        
+        // 주의 식품이 있으면 메시지 생성
+        recentWarningFoods.forEach((count, foodName) => {
+          // foodCorrelations에서 기본 확률 찾기
+          let defaultProb = 70;
+          if (data.foodCorrelations && data.foodCorrelations.length > 0) {
+            const foodCorrelation = data.foodCorrelations.find(f => f.food === foodName);
+            if (foodCorrelation && foodCorrelation.flareProbability > 0) {
+              defaultProb = Math.round(foodCorrelation.flareProbability);
+            }
+          }
+          
+          const probability = getFoodProbability(foodName, defaultProb);
+          foodMessages.push(`${foodName} 섭취 후 24시간 내 증상 악화 확률 ${probability}%`);
+        });
+      }
+    } catch (e) {
+      console.error('Failed to load daily records:', e);
+    }
+    
+    // 기존 foodCorrelations 분석도 유지
+    if (data.foodCorrelations && data.foodCorrelations.length > 0) {
+      const topFoods = data.foodCorrelations
+        .filter(c => c.recommendation === 'avoid' || c.flareProbability > 30)
+        .slice(0, 3);
+      
+      topFoods.forEach(food => {
+        // 이미 일일 기록에서 추가된 식품은 제외
+        const alreadyAdded = foodMessages.some(msg => msg.includes(food.food));
+        if (!alreadyAdded) {
+          const probability = getFoodProbability(food.food, Math.round(food.flareProbability));
+          if (probability >= 50) {
+            foodMessages.push(`${food.food} 섭취 후 ${Math.round(food.averageHoursToSymptom)}시간 내 증상 악화 확률 ${probability}%`);
+          } else if (food.message && food.message.includes('끊은 뒤')) {
+            // flare 빈도 감소 메시지가 있는 경우
+            foodMessages.push(`${food.food} 끊은 뒤 flare 빈도 ${Math.round(100 - food.flareProbability)}% 감소`);
+          } else if (probability >= 20) {
+            // 일반적인 위험 음식
+            foodMessages.push(`${food.food} 섭취 후 ${Math.round(food.averageHoursToSymptom)}시간 내 증상 악화 확률 ${probability}%`);
+          }
+        }
+      });
+    }
+
+    if (foodMessages.length > 0) {
+      analysis.push({ type: 'food', messages: foodMessages });
+    }
+
+    // 3. 통합 분석
+    if (data.riskAnalysis) {
+      const integratedMessages: string[] = [];
+      const factors: string[] = [];
+      
+      if (data.riskAnalysis.factors && data.riskAnalysis.factors.stress) factors.push('스트레스');
+      if (data.riskAnalysis.factors && data.riskAnalysis.factors.sleep) factors.push('수면 부족');
+      if (data.riskAnalysis.factors && data.riskAnalysis.factors.food) factors.push('특정 음식');
+      
+      if (factors.length > 0) {
+        integratedMessages.push(`최근 3일간 ${factors.join(' + ')}으로 flare 가능성 경고`);
+      }
+      
+      if (data.riskAnalysis.message && data.riskAnalysis.message.includes('유사한 패턴')) {
+        integratedMessages.push('지난번 flare 전과 유사한 패턴입니다');
+      }
+
+      if (integratedMessages.length > 0) {
+        analysis.push({ type: 'integrated', messages: integratedMessages });
+      }
+    }
+
+    console.log('generateDailyRiskAnalysis - result:', analysis);
+    return analysis;
+  };
+
+  const dailyRiskAnalysis = generateDailyRiskAnalysis();
+    
+    return (
     <div className="prediction-cards-container">
       {/* 오늘 예측 카드 */}
       <div className="prediction-card today-card">
         <div className="prediction-card-header">
           <span className="prediction-emoji">🔵</span>
           <span className="prediction-date-label">오늘 예측 ({todayPrediction.date})</span>
-        </div>
+          </div>
         
         <div className="prediction-score-section">
           <div className="prediction-score-label">예측 점수:</div>
@@ -1212,7 +1510,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
           <span className={`prediction-status-badge ${todayPrediction.level}`}>
             {todayPrediction.level === 'stable' ? '✅' : todayPrediction.level === 'caution' ? '⚠️' : '🚨'} {todayPrediction.label}
           </span>
-        </div>
+      </div>
         
         {todayPrediction.riskFactors.length > 0 && (
           <div className="prediction-risk-factors">
@@ -1228,7 +1526,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
         <div className="prediction-ai-summary">
           <div className="prediction-ai-label">🧠 AI 한줄 요약:</div>
           <div className="prediction-ai-text">"{todayPrediction.summary}"</div>
-        </div>
+            </div>
       </div>
 
       {/* 내일 예측 카드 */}
@@ -1236,19 +1534,19 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
         <div className="prediction-card-header">
           <span className="prediction-emoji">🟣</span>
           <span className="prediction-date-label">내일 예측 ({tomorrowPrediction.date})</span>
-        </div>
+                    </div>
         
         <div className="prediction-score-section">
           <div className="prediction-score-label">예측 점수:</div>
           <div className="prediction-score-value">{tomorrowPrediction.score.toFixed(1)} / 100</div>
-        </div>
+                    </div>
         
         <div className="prediction-status-section">
           <span className="prediction-status-label">상태:</span>
           <span className={`prediction-status-badge ${tomorrowPrediction.level}`}>
             {tomorrowPrediction.level === 'stable' ? '✅' : tomorrowPrediction.level === 'caution' ? '⚠️' : '🚨'} {tomorrowPrediction.label}
           </span>
-        </div>
+                  </div>
         
         {tomorrowPrediction.riskFactors.length > 0 && (
           <div className="prediction-risk-factors">
@@ -1256,73 +1554,187 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
             <div className="prediction-risk-list">
               {tomorrowPrediction.riskFactors.join(', ')}
             </div>
-          </div>
-        )}
-        
+              </div>
+            )}
+
         <div className="prediction-divider"></div>
         
         <div className="prediction-ai-summary">
           <div className="prediction-ai-label">🧠 AI 예측 요약:</div>
           <div className="prediction-ai-text">"{tomorrowPrediction.summary}"</div>
         </div>
-
-        {/* 주간 트렌드 분석 */}
-        {weeklyTrend.length > 0 && (
-          <div className="prediction-weekly-trend">
-            <div className="prediction-divider"></div>
-            <div className="prediction-trend-title">📊 주간 트렌드 분석</div>
-            <div className="prediction-trend-chart">
-              <div className="prediction-trend-chart-container">
-                {weeklyTrend.map((point, idx) => {
-                  const maxScore = Math.max(...weeklyTrend.map(p => p.score), 100);
-                  const height = (point.score / maxScore) * 100;
-                  const isToday = idx === weeklyTrend.length - 2;
-                  const isTomorrow = idx === weeklyTrend.length - 1;
-                  
-                  return (
-                    <div key={idx} className="prediction-trend-bar-wrapper">
-                      <div className="prediction-trend-bar-container">
-                        <div 
-                          className={`prediction-trend-bar ${isToday ? 'today' : isTomorrow ? 'tomorrow' : ''}`}
-                          style={{
-                            height: `${Math.max(height, 5)}%`,
-                            backgroundColor: point.score >= 60 ? '#ef4444' : 
-                                            point.score >= 30 ? '#f59e0b' : '#10b981'
-                          }}
-                          title={`${point.date}: ${point.score.toFixed(1)}점`}
-                        />
-                        <span className="prediction-trend-score">{point.score.toFixed(1)}</span>
-                      </div>
-                      <span className="prediction-trend-day">{point.day}일</span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* 위험요인 분석 */}
-        {dailyRiskFactors.length > 0 && (
-          <div className="prediction-daily-risk-factors">
-            <div className="prediction-divider"></div>
-            <div className="prediction-risk-factors-title">⚠️ 일일 기록 기반 위험요인 분석</div>
-            <div className="prediction-risk-factors-list">
-              {dailyRiskFactors.map((risk, idx) => (
-                <div key={idx} className={`prediction-risk-factor-item ${risk.level}`}>
-                  <div className="prediction-risk-factor-header">
-                    <span className="prediction-risk-factor-name">{risk.factor}</span>
-                    <span className={`prediction-risk-factor-badge ${risk.level}`}>
-                      {risk.level === 'high' ? '🔴 높음' : risk.level === 'medium' ? '🟡 보통' : '🟢 낮음'}
-                    </span>
-                  </div>
-                  <div className="prediction-risk-factor-message">{risk.message}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* 주간 트렌드 분석 */}
+      {weeklyTrend.length > 0 && (
+        <div className="prediction-weekly-trend-card">
+          <div className="prediction-trend-title">📊 주간 트렌드 분석</div>
+          <div className="prediction-trend-chart">
+            <div className="prediction-trend-chart-container">
+              {weeklyTrend.map((point, idx) => {
+                const scores = weeklyTrend.map(p => p.score);
+                const maxScore = Math.max(...scores, 100);
+                const minScore = Math.min(...scores);
+                const range = maxScore - minScore || 1;
+                // 정규화: 최소값을 0으로, 최대값을 100%로 매핑 (최소 높이 10% 보장)
+                const normalizedHeight = ((point.score - minScore) / range) * 90 + 10;
+                const height = Math.max(normalizedHeight, 10);
+                const isToday = idx === weeklyTrend.length - 2;
+                const isTomorrow = idx === weeklyTrend.length - 1;
+                
+                return (
+                  <div key={idx} className="prediction-trend-bar-wrapper">
+                    <div className="prediction-trend-bar-container">
+                      <div 
+                        className={`prediction-trend-bar ${isToday ? 'today' : isTomorrow ? 'tomorrow' : ''}`}
+                        style={{
+                          height: `${height}%`,
+                          backgroundColor: point.score >= 60 ? '#ef4444' : 
+                                          point.score >= 30 ? '#f59e0b' : '#10b981'
+                        }}
+                        title={`${point.date}: ${point.score.toFixed(1)}점`}
+                      />
+                      <span className="prediction-trend-score">{point.score.toFixed(1)}</span>
+                    </div>
+                    <span className="prediction-trend-day">{point.day}일</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 위험요인 분석 */}
+        <div className="prediction-daily-risk-factors">
+          <div className="prediction-divider"></div>
+          <div className="prediction-risk-factors-title">⚠️ 위험요인 분석</div>
+          
+          {/* 기존 위험요인 리스트 (음식 관련 제외) */}
+          {dailyRiskFactors.filter(risk => !risk.factor.includes('음식')).length > 0 && (
+            <div className="prediction-risk-factors-list">
+              {dailyRiskFactors
+                .filter(risk => !risk.factor.includes('음식'))
+                .map((risk, idx) => (
+                  <div key={idx} className={`prediction-risk-factor-item ${risk.level}`}>
+                    <div className="prediction-risk-factor-header">
+                      <span className="prediction-risk-factor-name">{risk.factor}</span>
+                      <span className={`prediction-risk-factor-badge ${risk.level}`}>
+                        {risk.level === 'high' ? '🔴 높음' : risk.level === 'medium' ? '🟡 보통' : '🟢 낮음'}
+                      </span>
+                    </div>
+                    <div className="prediction-risk-factor-message">{risk.message}</div>
+                  </div>
+                ))}
+            </div>
+          )}
+
+          {/* 일일 기록 기반 위험 요인 분석 (음식, 스트레스, 통합 분석) */}
+          {dailyRiskAnalysis.length > 0 && (
+            <div className="prediction-daily-analysis-content">
+              {/* 음식 분석 칸 */}
+              {dailyRiskAnalysis.find(item => item.type === 'food') && (
+                <div className="prediction-food-analysis-section">
+                  <div className="prediction-analysis-section-title">음식 분석</div>
+                  <div className="prediction-food-messages-list">
+                    {dailyRiskAnalysis
+                      .find(item => item.type === 'food')
+                      ?.messages.map((msg, msgIdx) => {
+                        // 확률 부분을 강조
+                        const parts = msg.split(/(\d+%)/);
+                        return (
+                          <div key={msgIdx} className="prediction-food-message">
+                            "{parts.map((part, idx) => 
+                              /\d+%/.test(part) ? (
+                                <span key={idx} className="prediction-food-highlight">{part}</span>
+                              ) : (
+                                part
+                              )
+                            )}"
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+
+              {/* 스트레스 분석 칸 */}
+              {dailyRiskAnalysis.find(item => item.type === 'stress') && (
+                <div className="prediction-stress-analysis-section">
+                  <div className="prediction-analysis-section-title">스트레스 분석</div>
+                  <div className="prediction-stress-messages-list">
+                    {dailyRiskAnalysis
+                      .find(item => item.type === 'stress')
+                      ?.messages.map((msg, msgIdx) => {
+                        // "2일" 부분을 강조
+                        const parts = msg.split(/(\d+일)/);
+                        return (
+                          <div key={msgIdx} className="prediction-stress-message">
+                            "{parts.map((part, idx) => 
+                              /\d+일/.test(part) ? (
+                                <span key={idx} className="prediction-stress-highlight">{part}</span>
+                              ) : (
+                                part
+                              )
+                            )}"
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+
+              {/* 수면 분석 칸 */}
+              {dailyRiskAnalysis.find(item => item.type === 'sleep') && (
+                <div className="prediction-sleep-analysis-section">
+                  <div className="prediction-analysis-section-title">수면 분석</div>
+                  <div className="prediction-sleep-messages-list">
+                    {dailyRiskAnalysis
+                      .find(item => item.type === 'sleep')
+                      ?.messages.map((msg, msgIdx) => {
+                        // "1.4배 증가" 부분을 강조
+                        const parts = msg.split(/(\d+\.?\d*배 증가)/);
+                        return (
+                          <div key={msgIdx} className="prediction-sleep-message">
+                            "{parts.map((part, idx) => 
+                              /\d+\.?\d*배 증가/.test(part) ? (
+                                <span key={idx} className="prediction-sleep-highlight">{part}</span>
+                              ) : (
+                                part
+                              )
+                            )}"
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+
+              {/* 통합 분석 칸 */}
+              {dailyRiskAnalysis.find(item => item.type === 'integrated') && (
+                <div className="prediction-analysis-card integrated-card">
+                  <div className="prediction-analysis-card-title">통합 분석</div>
+                  <div className="prediction-analysis-integrated">
+                    {dailyRiskAnalysis
+                      .find(item => item.type === 'integrated')
+                      ?.messages.map((msg, msgIdx) => (
+                        <div key={msgIdx} className="prediction-analysis-message">
+                          "{msg}"
+                    </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+            </div>
+          )}
+
+          {/* 데이터가 없을 때 */}
+          {dailyRiskFactors.length === 0 && dailyRiskAnalysis.length === 0 && (
+            <div className="prediction-analysis-no-data">
+              일일 기록 데이터를 입력하면 분석 결과가 표시됩니다.
+            </div>
+          )}
+        </div>
     </div>
   );
 };

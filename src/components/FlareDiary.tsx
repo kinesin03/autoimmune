@@ -527,7 +527,7 @@ const FlareDiary: React.FC = () => {
             </div>
             <div className="card-action-buttons">
               <button className="card-action-btn" onClick={() => setShowModal('meal')}>
-                {mealCount < 3 ? '저녁 추가' : '기록 수정'}
+                {mealCount < 3 ? '기록 추가' : '기록 수정'}
               </button>
               {mealCount > 0 && (
                 <button className="card-action-btn btn-view" onClick={() => setShowModal('meal-view')}>

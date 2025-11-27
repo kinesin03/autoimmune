@@ -153,7 +153,6 @@
   padding: 10px;
   background: #f9fafb;
   border-radius: 8px;
-  border-left: 3px solid #7c3aed;
 }
 
 .flare-ai-card {
@@ -757,7 +756,12 @@
 }
 
 /* 주간 트렌드 분석 */
-.prediction-weekly-trend {
+.prediction-weekly-trend-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3b82f6;
   margin-top: 16px;
 }
 
@@ -770,16 +774,37 @@
 
 .prediction-trend-chart {
   width: 100%;
+  position: relative;
 }
 
 .prediction-trend-chart-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-end;
-  height: 180px;
-  padding: 10px 0 30px 0;
-  gap: 8px;
+  height: 200px;
+  padding: 20px 10px 40px 10px;
+  gap: 6px;
   position: relative;
+  background: linear-gradient(to top, 
+    transparent 0%, 
+    transparent 20%, 
+    rgba(229, 231, 235, 0.3) 20%, 
+    rgba(229, 231, 235, 0.3) 21%, 
+    transparent 21%, 
+    transparent 40%, 
+    rgba(229, 231, 235, 0.3) 40%, 
+    rgba(229, 231, 235, 0.3) 41%, 
+    transparent 41%, 
+    transparent 60%, 
+    rgba(229, 231, 235, 0.3) 60%, 
+    rgba(229, 231, 235, 0.3) 61%, 
+    transparent 61%, 
+    transparent 80%, 
+    rgba(229, 231, 235, 0.3) 80%, 
+    rgba(229, 231, 235, 0.3) 81%, 
+    transparent 81%
+  );
+  background-size: 100% 100%;
 }
 
 .prediction-trend-bar-wrapper {
@@ -789,26 +814,31 @@
   flex: 1;
   height: 100%;
   position: relative;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .prediction-trend-bar-container {
   width: 100%;
-  height: calc(100% - 30px);
+  height: calc(100% - 35px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  min-height: 0;
 }
 
 .prediction-trend-bar {
-  width: 100%;
-  max-width: 40px;
-  border-radius: 4px 4px 0 0;
-  transition: height 0.3s ease;
+  width: 85%;
+  max-width: 45px;
+  min-width: 30px;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  min-height: 4px;
+  min-height: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .prediction-trend-bar.today {
@@ -840,6 +870,11 @@
 /* 위험요인 분석 */
 .prediction-daily-risk-factors {
   margin-top: 16px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #f59e0b;
 }
 
 .prediction-risk-factors-title {
@@ -858,22 +893,18 @@
 .prediction-risk-factor-item {
   padding: 12px;
   border-radius: 8px;
-  border-left: 3px solid #e5e7eb;
   background: #f9fafb;
 }
 
 .prediction-risk-factor-item.high {
-  border-left-color: #ef4444;
   background: #fef2f2;
 }
 
 .prediction-risk-factor-item.medium {
-  border-left-color: #f59e0b;
   background: #fffbeb;
 }
 
 .prediction-risk-factor-item.low {
-  border-left-color: #10b981;
   background: #f0fdf4;
 }
 
@@ -916,6 +947,182 @@
   font-size: 0.85rem;
   color: #4b5563;
   line-height: 1.5;
+}
+
+/* 일일 기록 기반 위험 요인 분석 */
+.prediction-daily-risk-analysis {
+  margin-top: 16px;
+}
+
+.prediction-daily-analysis-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.prediction-daily-analysis-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-analysis-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #7c3aed;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-analysis-card.stress-card {
+  border-left-color: #3b82f6;
+}
+
+.prediction-analysis-card.food-card {
+  border-left-color: #f59e0b;
+}
+
+.prediction-analysis-card.integrated-card {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+}
+
+.prediction-analysis-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.prediction-daily-analysis-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prediction-analysis-stress,
+.prediction-analysis-food {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prediction-analysis-integrated {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prediction-analysis-integrated-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #991b1b;
+  margin-bottom: 4px;
+}
+
+.prediction-analysis-message {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
+
+.prediction-analysis-integrated .prediction-analysis-message {
+  background: white;
+  color: #991b1b;
+}
+
+.prediction-analysis-no-data {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+}
+
+.prediction-food-analysis-section,
+.prediction-stress-analysis-section,
+.prediction-sleep-analysis-section {
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.prediction-food-analysis-section {
+  background: #fff7ed;
+}
+
+.prediction-stress-analysis-section {
+  background: #eff6ff;
+}
+
+.prediction-sleep-analysis-section {
+  background: #f5f3ff;
+}
+
+.prediction-analysis-section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.prediction-food-messages-list,
+.prediction-stress-messages-list,
+.prediction-sleep-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prediction-food-message {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 8px;
+}
+
+.prediction-stress-message {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 8px;
+}
+
+.prediction-sleep-message {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 8px;
+}
+
+.prediction-food-highlight {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.prediction-stress-highlight {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.prediction-sleep-highlight {
+  color: #8b5cf6;
+  font-weight: 700;
 }
 
 /* 반응형 디자인 */

@@ -5,6 +5,7 @@ import IntroSlide1 from './components/IntroSlide1';
 import IntroSlide2 from './components/IntroSlide2';
 import IntroSlide3 from './components/IntroSlide3';
 import IntroSlide4 from './components/IntroSlide4';
+import IntroSlide5 from './components/IntroSlide5';
 import TodayFlareIndexNew from './components/TodayFlareIndexNew';
 import ProdromalFlarePredictionComponent from './components/ProdromalFlarePrediction';
 import FlareDiary from './components/FlareDiary';
@@ -28,6 +29,7 @@ function App() {
   const [showIntroSlide2, setShowIntroSlide2] = useState(false);
   const [showIntroSlide3, setShowIntroSlide3] = useState(false);
   const [showIntroSlide4, setShowIntroSlide4] = useState(false);
+  const [showIntroSlide5, setShowIntroSlide5] = useState(false);
   const [activeTab, setActiveTab] = useState<'today' | 'environment' | 'prodromal' | 'diary' | 'management' | 'emotional'>('today');
   const [gameData, setGameData] = useState(getGameData());
   const [diagnosisData] = useState<DiagnosisData>(() => {
@@ -136,8 +138,20 @@ function App() {
       <IntroSlide4 
         onNext={() => {
           console.log('IntroSlide4 onNext called');
-          localStorage.setItem('introCompleted', 'true');
           setShowIntroSlide4(false);
+          setShowIntroSlide5(true);
+        }} 
+      />
+    );
+  }
+
+  if (showIntroSlide5) {
+    return renderWithPhoneFrame(
+      <IntroSlide5 
+        onNext={() => {
+          console.log('IntroSlide5 onNext called');
+          localStorage.setItem('introCompleted', 'true');
+          setShowIntroSlide5(false);
         }} 
       />
     );
