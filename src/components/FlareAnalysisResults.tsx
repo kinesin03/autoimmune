@@ -156,9 +156,19 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
 
   useEffect(() => {
     console.log('FlareAnalysisResults useEffect triggered');
+    let isAnalyzing = false;
+    let lastRecordsHash = '';
+    let lastDiseasesHash = '';
+    
     const analyzeData = () => {
+      // 이미 분석 중이면 스킵 (깜빡임 방지)
+      if (isAnalyzing) {
+        console.log('Analysis already in progress, skipping...');
+        return;
+      }
+      isAnalyzing = true;
       console.log('Starting analysis...');
-      setLoading(true);
+      // setLoading(true) 제거 - 깜빡임 방지
       
       try {
         const diseases = JSON.parse(localStorage.getItem('userDiseases') || '[]');
@@ -167,6 +177,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
           console.log('No diseases selected');
           setAnalyses([]);
           setLoading(false);
+          isAnalyzing = false;
           return;
         }
 
@@ -176,6 +187,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
           console.log('No stored records');
           setAnalyses([]);
           setLoading(false);
+          isAnalyzing = false;
           return;
         }
 
@@ -185,6 +197,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
           console.log('Records array is empty');
           setAnalyses([]);
           setLoading(false);
+          isAnalyzing = false;
           return;
         }
 
@@ -786,6 +799,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
         setAnalyses([]);
       } finally {
         setLoading(false);
+        isAnalyzing = false;
       }
     };
 
@@ -808,11 +822,22 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('prodromalSymptomRecordsUpdated', handleCustomStorageChange);
 
-    // 주기적으로 체크 (백업) - 더 자주 체크하여 빠른 반응
+    // 주기적으로 체크 (백업) - 깜빡임 방지를 위해 간격을 늘리고 조건부 실행
     const interval = setInterval(() => {
-      console.log('Interval check - running analysis');
-      analyzeData();
-    }, 2000);
+      // 데이터가 실제로 변경되었는지 확인
+      const currentRecords = localStorage.getItem('prodromalSymptomRecords') || '';
+      const currentDiseases = localStorage.getItem('userDiseases') || '';
+      const currentRecordsHash = currentRecords.substring(0, 50); // 해시 대신 간단한 비교
+      const currentDiseasesHash = currentDiseases.substring(0, 50);
+      
+      // 이전 값과 비교하여 변경된 경우에만 분석 실행
+      if (currentRecordsHash !== lastRecordsHash || currentDiseasesHash !== lastDiseasesHash) {
+        console.log('Interval check - data changed, running analysis');
+        lastRecordsHash = currentRecordsHash;
+        lastDiseasesHash = currentDiseasesHash;
+        analyzeData();
+      }
+    }, 5000); // 2초에서 5초로 변경
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
@@ -887,22 +912,76 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
             return current.date > latest.date ? current : latest;
           }, records[0]);
           
-          // 기본 점수 계산 (간단한 휴리스틱)
-          let baseScore = 20; // 기본 점수
+          console.log('Calculating tomorrow prediction from latest record:', latestRecord);
           
-          // 공통 증상 점수 추가
-          if (latestRecord.commonSymptoms) {
-            const symptoms = latestRecord.commonSymptoms;
-            const symptomValues = [
-              symptoms.fatigue || 0,
-              symptoms.stress || 0,
-              symptoms.jointPain || 0,
-              symptoms.abdominalPain || 0,
-              symptoms.anxiety || 0,
-              symptoms.depression || 0
-            ];
-            const avgSymptom = symptomValues.reduce((a, b) => a + b, 0) / symptomValues.length;
-            baseScore += avgSymptom * 2; // 증상 점수 반영
+          // 질병별 분석 함수 사용 (analyses와 동일한 로직)
+          const diseases = JSON.parse(localStorage.getItem('userDiseases') || '[]');
+          let calculatedScore = 0;
+          let calculatedLevel: 'stable' | 'caution' | 'flare' = 'stable';
+          let calculatedLabel = '안정 단계';
+          const riskFactors: string[] = [];
+          
+          // 류마티스 관절염 분석
+          if (diseases.includes('류마티스 관절염') && latestRecord.commonSymptoms) {
+            try {
+              const raSpecific = latestRecord.diseaseSpecific?.rheumatoidArthritis;
+              const inputs: RAInputValues = {
+                fatigue: latestRecord.commonSymptoms.fatigue ?? 0,
+                bodyTemp: latestRecord.commonSymptoms.bodyTemperature ?? 36.5,
+                myalgia: latestRecord.commonSymptoms.bodyAche ?? 0,
+                anxiety: latestRecord.commonSymptoms.anxiety ?? 0,
+                depression: latestRecord.commonSymptoms.depression ?? 0,
+                stress: latestRecord.commonSymptoms.stress ?? 0,
+                sleepDisturbance: latestRecord.commonSymptoms.sleepDisorder ?? 0,
+                appetiteLoss: latestRecord.commonSymptoms.appetiteLoss ?? 0,
+                abdominalPain: latestRecord.commonSymptoms.abdominalPain ?? 0,
+                jointPain: latestRecord.commonSymptoms.jointPain ?? 0,
+                functionLoss: latestRecord.commonSymptoms.functionalDecline ?? 0,
+                skinPain: latestRecord.commonSymptoms.skinPain ?? 0,
+                itchiness: latestRecord.commonSymptoms.itching ?? 0,
+                jointSwelling: raSpecific?.jointSwelling ?? 0,
+                jointStiffness: raSpecific?.jointStiffness ?? 0,
+                morningWorse: raSpecific?.worseInMorning ?? raSpecific?.morningWorse ?? 0
+              };
+              const thresholds = getDefaultThresholds();
+              const calculation = calculateRafiScore(inputs, thresholds);
+              const risk = classifyRafiRisk(calculation.score);
+              calculatedScore = calculation.score;
+              if (calculation.score >= 65) calculatedLevel = 'flare';
+              else if (calculation.score >= 35) calculatedLevel = 'caution';
+              calculatedLabel = risk.label;
+              
+              // 위험 요인 수집
+              if (inputs.stress > thresholds.stress) riskFactors.push('스트레스');
+              if (inputs.jointPain > thresholds.jointPain) riskFactors.push('관절통');
+              if (inputs.fatigue > thresholds.fatigue) riskFactors.push('피로');
+            } catch (e) {
+              console.error('Error calculating RA score:', e);
+            }
+          }
+          
+          // 다른 질병들도 유사하게 처리할 수 있지만, 일단 RA만 처리
+          // 점수가 0이면 기본 계산 사용
+          if (calculatedScore === 0) {
+            // 기본 점수 계산 (간단한 휴리스틱)
+            let baseScore = 20; // 기본 점수
+            
+            // 공통 증상 점수 추가
+            if (latestRecord.commonSymptoms) {
+              const symptoms = latestRecord.commonSymptoms;
+              const symptomValues = [
+                symptoms.fatigue || 0,
+                symptoms.stress || 0,
+                symptoms.jointPain || 0,
+                symptoms.abdominalPain || 0,
+                symptoms.anxiety || 0,
+                symptoms.depression || 0
+              ];
+              const avgSymptom = symptomValues.reduce((a, b) => a + b, 0) / symptomValues.length;
+              baseScore += avgSymptom * 2; // 증상 점수 반영
+            }
+            
+            calculatedScore = baseScore;
           }
           
           // 스트레스 기록 확인
@@ -918,7 +997,8 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
             if (recentStress.length > 0) {
               const avgStress = recentStress.reduce((a, b) => a + b, 0) / recentStress.length;
               if (avgStress >= 7) {
-                baseScore += 15; // 높은 스트레스 추가 점수
+                calculatedScore += 15; // 높은 스트레스 추가 점수
+                if (!riskFactors.includes('스트레스')) riskFactors.push('스트레스');
               }
             }
           }
@@ -936,42 +1016,38 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
             if (recentSleep.length > 0) {
               const avgSleep = recentSleep.reduce((a, b) => a + b, 0) / recentSleep.length;
               if (avgSleep <= 6) {
-                baseScore += 10; // 수면 부족 추가 점수
+                calculatedScore += 10; // 수면 부족 추가 점수
               }
             }
           }
           
           // 점수 범위 제한
-          baseScore = Math.max(0, Math.min(100, baseScore));
+          calculatedScore = Math.max(0, Math.min(100, calculatedScore));
           
-          // 레벨 결정
-          let level: 'stable' | 'caution' | 'flare' = 'stable';
-          let label = '안정 단계';
-          if (baseScore >= 65) {
-            level = 'flare';
-            label = 'Flare 단계';
-          } else if (baseScore >= 35) {
-            level = 'caution';
-            label = '주의 단계';
+          // 레벨 재결정
+          if (calculatedScore >= 65) {
+            calculatedLevel = 'flare';
+            calculatedLabel = 'Flare 단계';
+          } else if (calculatedScore >= 35) {
+            calculatedLevel = 'caution';
+            calculatedLabel = '주의 단계';
+          } else {
+            calculatedLevel = 'stable';
+            calculatedLabel = '안정 단계';
           }
           
-          // 위험 요인 수집
-          const riskFactors: string[] = [];
-          if (latestRecord.commonSymptoms?.stress && latestRecord.commonSymptoms.stress >= 7) {
-            riskFactors.push('스트레스');
-          }
-          if (latestRecord.commonSymptoms?.jointPain && latestRecord.commonSymptoms.jointPain >= 5) {
-            riskFactors.push('관절통');
-          }
-          if (latestRecord.commonSymptoms?.fatigue && latestRecord.commonSymptoms.fatigue >= 5) {
-            riskFactors.push('피로');
-          }
+          console.log('Tomorrow prediction calculated:', {
+            score: calculatedScore,
+            level: calculatedLevel,
+            label: calculatedLabel,
+            riskFactors
+          });
           
           return {
             date: tomorrowFormatted,
-            score: Math.round(baseScore * 10) / 10,
-            level,
-            label,
+            score: Math.round(calculatedScore * 10) / 10,
+            level: calculatedLevel,
+            label: calculatedLabel,
             riskFactors,
             summary: riskFactors.length > 0 
               ? `${riskFactors.join(', ')}으로 flare 위험이 다소 증가할 수 있습니다.`

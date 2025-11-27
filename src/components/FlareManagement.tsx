@@ -100,8 +100,8 @@ const FlareManagement: React.FC = () => {
     window.addEventListener('stressRecordsUpdated', handleStressUpdate);
     window.addEventListener('storage', handleStorageChange);
 
-    // 주기적으로 체크 (매 2초)
-    const interval = setInterval(checkForUpdates, 2000);
+    // 주기적으로 체크 (깜빡임 방지를 위해 간격을 늘림)
+    const interval = setInterval(checkForUpdates, 5000);
 
     return () => {
       window.removeEventListener('prodromalSymptomRecordsUpdated', handleUpdate);
