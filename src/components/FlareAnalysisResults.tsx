@@ -1569,6 +1569,12 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
         type: 'sleep', 
         messages: ['6시간 이하 수면 시 flare 위험이 1.4배 증가'] 
       });
+    } else {
+      // 수면 기록이 없어도 항상 기본 메시지 표시 (모바일에서도 보이도록)
+      analysis.push({ 
+        type: 'sleep', 
+        messages: ['6시간 이하 수면 시 flare 위험이 1.4배 증가'] 
+      });
     }
 
     // 3. 음식 분석
