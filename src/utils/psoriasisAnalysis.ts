@@ -245,3 +245,6 @@ export function getDefaultPsoriasisThresholds(): PsoriasisThresholds {
   return { ...DEFAULT_THRESHOLDS };
 }
 
+
+
+

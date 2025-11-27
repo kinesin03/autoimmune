@@ -7,6 +7,155 @@
   margin: 0 auto;
 }
 
+/* 예측 카드 컨테이너 - 나란히 배치 */
+.prediction-cards-container {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.prediction-card {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #3b82f6;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-card.today-card {
+  border-left-color: #3b82f6;
+}
+
+.prediction-card.tomorrow-card {
+  border-left-color: #a855f7;
+}
+
+.prediction-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.prediction-emoji {
+  font-size: 1.2rem;
+}
+
+.prediction-date-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.prediction-score-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prediction-score-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.prediction-score-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.prediction-status-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.prediction-status-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.prediction-status-badge {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.prediction-status-badge.stable {
+  background: #10b981;
+}
+
+.prediction-status-badge.caution {
+  background: #f59e0b;
+}
+
+.prediction-status-badge.flare {
+  background: #ef4444;
+}
+
+.prediction-risk-factors {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.prediction-risk-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.prediction-risk-list {
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.prediction-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 8px 0;
+}
+
+.prediction-ai-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.prediction-ai-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.prediction-ai-text {
+  font-size: 0.9rem;
+  color: #374151;
+  line-height: 1.6;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 3px solid #7c3aed;
+}
+
 .flare-ai-card {
   background: white;
   padding: 24px;
@@ -605,4 +754,188 @@
 
 .recommendations-list li {
   margin-bottom: 4px;
+}
+
+/* 주간 트렌드 분석 */
+.prediction-weekly-trend {
+  margin-top: 16px;
+}
+
+.prediction-trend-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.prediction-trend-chart {
+  width: 100%;
+}
+
+.prediction-trend-chart-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 180px;
+  padding: 10px 0 30px 0;
+  gap: 8px;
+  position: relative;
+}
+
+.prediction-trend-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.prediction-trend-bar-container {
+  width: 100%;
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.prediction-trend-bar {
+  width: 100%;
+  max-width: 40px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  min-height: 4px;
+}
+
+.prediction-trend-bar.today {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.prediction-trend-bar.tomorrow {
+  border: 2px solid #a855f7;
+  box-shadow: 0 2px 4px rgba(168, 85, 247, 0.3);
+}
+
+.prediction-trend-score {
+  font-size: 0.7rem;
+  color: #1f2937;
+  font-weight: 600;
+  margin-top: 4px;
+  text-align: center;
+}
+
+.prediction-trend-day {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* 위험요인 분석 */
+.prediction-daily-risk-factors {
+  margin-top: 16px;
+}
+
+.prediction-risk-factors-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.prediction-risk-factors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prediction-risk-factor-item {
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 3px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.prediction-risk-factor-item.high {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+}
+
+.prediction-risk-factor-item.medium {
+  border-left-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.prediction-risk-factor-item.low {
+  border-left-color: #10b981;
+  background: #f0fdf4;
+}
+
+.prediction-risk-factor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.prediction-risk-factor-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.prediction-risk-factor-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.prediction-risk-factor-badge.high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.prediction-risk-factor-badge.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.prediction-risk-factor-badge.low {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.prediction-risk-factor-message {
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .prediction-cards-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .prediction-card {
+    min-width: 100%;
+    width: 100%;
+  }
+
+  .prediction-trend-chart-container {
+    height: 150px;
+    gap: 4px;
+  }
+
+  .prediction-trend-bar {
+    max-width: 30px;
+  }
 }
