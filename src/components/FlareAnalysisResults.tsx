@@ -857,28 +857,146 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
   }
 
   // 내일 예측 (실제 데이터 기반)
-  const tomorrowPrediction = analyses.length > 0 ? {
-    date: tomorrowFormatted,
-    score: analyses[0].score,
-    level: analyses[0].level,
-    label: analyses[0].label,
-    riskFactors: analyses[0].contributions
-      ? analyses[0].contributions
-          .sort((a, b) => b.contribution - a.contribution)
-          .slice(0, 2)
-          .map(c => c.label)
-      : [],
-    summary: analyses[0].message || '스트레스와 식사량 감소로 flare 위험이 다소 증가할 수 있습니다.',
-    weeklyTrend: analyses[0].weeklyTrend || []
-  } : {
-    date: tomorrowFormatted,
-    score: 0,
-    level: 'stable' as const,
-    label: '데이터 없음',
-    riskFactors: [],
-    summary: '증상일지를 기록하면 내일 예측이 제공됩니다.',
-    weeklyTrend: []
+  const calculateTomorrowPrediction = () => {
+    if (analyses.length > 0) {
+      return {
+        date: tomorrowFormatted,
+        score: analyses[0].score,
+        level: analyses[0].level,
+        label: analyses[0].label,
+        riskFactors: analyses[0].contributions
+          ? analyses[0].contributions
+              .sort((a, b) => b.contribution - a.contribution)
+              .slice(0, 2)
+              .map(c => c.label)
+          : [],
+        summary: analyses[0].message || '스트레스와 식사량 감소로 flare 위험이 다소 증가할 수 있습니다.',
+        weeklyTrend: analyses[0].weeklyTrend || []
+      };
+    }
+    
+    // analyses가 비어있을 때도 일지 기록 데이터 기반으로 계산
+    try {
+      const stored = localStorage.getItem('prodromalSymptomRecords');
+      if (stored) {
+        const records: StoredProdromalRecord[] = JSON.parse(stored);
+        if (records.length > 0) {
+          // 최신 레코드 찾기
+          const latestRecord = records.reduce((latest, current) => {
+            if (!latest) return current;
+            return current.date > latest.date ? current : latest;
+          }, records[0]);
+          
+          // 기본 점수 계산 (간단한 휴리스틱)
+          let baseScore = 20; // 기본 점수
+          
+          // 공통 증상 점수 추가
+          if (latestRecord.commonSymptoms) {
+            const symptoms = latestRecord.commonSymptoms;
+            const symptomValues = [
+              symptoms.fatigue || 0,
+              symptoms.stress || 0,
+              symptoms.jointPain || 0,
+              symptoms.abdominalPain || 0,
+              symptoms.anxiety || 0,
+              symptoms.depression || 0
+            ];
+            const avgSymptom = symptomValues.reduce((a, b) => a + b, 0) / symptomValues.length;
+            baseScore += avgSymptom * 2; // 증상 점수 반영
+          }
+          
+          // 스트레스 기록 확인
+          const stressRecords = data.stressRecords || [];
+          if (stressRecords.length > 0) {
+            const recentStress = stressRecords
+              .filter(r => {
+                const recordDate = new Date(r.date);
+                const daysDiff = Math.floor((Date.now() - recordDate.getTime()) / (1000 * 60 * 60 * 24));
+                return daysDiff <= 3;
+              })
+              .map(r => r.level);
+            if (recentStress.length > 0) {
+              const avgStress = recentStress.reduce((a, b) => a + b, 0) / recentStress.length;
+              if (avgStress >= 7) {
+                baseScore += 15; // 높은 스트레스 추가 점수
+              }
+            }
+          }
+          
+          // 수면 기록 확인
+          const sleepRecords = data.sleepRecords || [];
+          if (sleepRecords.length > 0) {
+            const recentSleep = sleepRecords
+              .filter(r => {
+                const recordDate = new Date(r.date);
+                const daysDiff = Math.floor((Date.now() - recordDate.getTime()) / (1000 * 60 * 60 * 24));
+                return daysDiff <= 3;
+              })
+              .map(r => r.totalHours);
+            if (recentSleep.length > 0) {
+              const avgSleep = recentSleep.reduce((a, b) => a + b, 0) / recentSleep.length;
+              if (avgSleep <= 6) {
+                baseScore += 10; // 수면 부족 추가 점수
+              }
+            }
+          }
+          
+          // 점수 범위 제한
+          baseScore = Math.max(0, Math.min(100, baseScore));
+          
+          // 레벨 결정
+          let level: 'stable' | 'caution' | 'flare' = 'stable';
+          let label = '안정 단계';
+          if (baseScore >= 65) {
+            level = 'flare';
+            label = 'Flare 단계';
+          } else if (baseScore >= 35) {
+            level = 'caution';
+            label = '주의 단계';
+          }
+          
+          // 위험 요인 수집
+          const riskFactors: string[] = [];
+          if (latestRecord.commonSymptoms?.stress && latestRecord.commonSymptoms.stress >= 7) {
+            riskFactors.push('스트레스');
+          }
+          if (latestRecord.commonSymptoms?.jointPain && latestRecord.commonSymptoms.jointPain >= 5) {
+            riskFactors.push('관절통');
+          }
+          if (latestRecord.commonSymptoms?.fatigue && latestRecord.commonSymptoms.fatigue >= 5) {
+            riskFactors.push('피로');
+          }
+          
+          return {
+            date: tomorrowFormatted,
+            score: Math.round(baseScore * 10) / 10,
+            level,
+            label,
+            riskFactors,
+            summary: riskFactors.length > 0 
+              ? `${riskFactors.join(', ')}으로 flare 위험이 다소 증가할 수 있습니다.`
+              : '현재 상태를 유지하면 flare 위험이 낮습니다.',
+            weeklyTrend: []
+          };
+        }
+      }
+    } catch (e) {
+      console.error('Failed to calculate tomorrow prediction:', e);
+    }
+    
+    // 데이터가 없을 때
+    return {
+      date: tomorrowFormatted,
+      score: 0,
+      level: 'stable' as const,
+      label: '데이터 없음',
+      riskFactors: [],
+      summary: '증상일지를 기록하면 내일 예측이 제공됩니다.',
+      weeklyTrend: []
+    };
   };
+  
+  const tomorrowPrediction = calculateTomorrowPrediction();
 
   // 주간 트렌드 데이터 생성 (이전 5일 + 오늘 + 내일 = 7일)
   const generateWeeklyTrend = () => {
@@ -890,6 +1008,17 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
     const existingTrend = analyses.length > 0 && analyses[0].weeklyTrend 
       ? analyses[0].weeklyTrend 
       : [];
+    
+    // 날짜 기반 해시 함수 (고정된 값 생성)
+    const getDateHash = (dateStr: string): number => {
+      let hash = 0;
+      for (let i = 0; i < dateStr.length; i++) {
+        const char = dateStr.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return Math.abs(hash);
+    };
     
     // 이전 5일 데이터
     for (let i = 5; i >= 1; i--) {
@@ -904,25 +1033,33 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
       
       if (existingPoint) {
         score = existingPoint.score;
-    } else {
-        // 실제 기록이 있으면 사용, 없으면 가상 데이터
+      } else {
+        // 실제 기록이 있으면 사용, 없으면 날짜 기반 고정 가상 데이터
         const stored = localStorage.getItem('prodromalSymptomRecords');
         if (stored) {
           try {
             const records: StoredProdromalRecord[] = JSON.parse(stored);
             const record = records.find(r => r.date === dateStr);
             if (record && analyses.length > 0) {
-              // 실제 기록이 있으면 해당 날짜의 점수 계산
-              score = analyses[0].score * 0.8 + (Math.random() * 10 - 5);
-        } else {
-              // 가상 데이터 (오늘 점수 기준으로 변동)
-              score = todayPrediction.score * 0.7 + (Math.random() * 15 - 7.5);
-        }
-      } catch (e) {
-            score = todayPrediction.score * 0.7 + (Math.random() * 15 - 7.5);
+              // 실제 기록이 있으면 해당 날짜의 점수 계산 (고정된 값)
+              const hash = getDateHash(dateStr);
+              const variation = (hash % 20) - 10; // -10 ~ 10 범위
+              score = analyses[0].score * 0.8 + variation;
+            } else {
+              // 가상 데이터 (오늘 점수 기준으로 날짜 기반 변동)
+              const hash = getDateHash(dateStr);
+              const variation = (hash % 30) - 15; // -15 ~ 15 범위
+              score = todayPrediction.score * 0.7 + variation;
+            }
+          } catch (e) {
+            const hash = getDateHash(dateStr);
+            const variation = (hash % 30) - 15;
+            score = todayPrediction.score * 0.7 + variation;
           }
         } else {
-          score = todayPrediction.score * 0.7 + (Math.random() * 15 - 7.5);
+          const hash = getDateHash(dateStr);
+          const variation = (hash % 30) - 15;
+          score = todayPrediction.score * 0.7 + variation;
         }
       }
       
@@ -1582,28 +1719,28 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
                 const isToday = idx === weeklyTrend.length - 2;
                 const isTomorrow = idx === weeklyTrend.length - 1;
                 
-                return (
+                      return (
                   <div key={idx} className="prediction-trend-bar-wrapper">
                     <div className="prediction-trend-bar-container">
-                      <div 
+                            <div 
                         className={`prediction-trend-bar ${isToday ? 'today' : isTomorrow ? 'tomorrow' : ''}`}
-                        style={{
-                          height: `${height}%`,
-                          backgroundColor: point.score >= 60 ? '#ef4444' : 
-                                          point.score >= 30 ? '#f59e0b' : '#10b981'
-                        }}
+                              style={{
+                                height: `${height}%`,
+                                backgroundColor: point.score >= 60 ? '#ef4444' : 
+                                                point.score >= 30 ? '#f59e0b' : '#10b981'
+                              }}
                         title={`${point.date}: ${point.score.toFixed(1)}점`}
-                      />
+                            />
                       <span className="prediction-trend-score">{point.score.toFixed(1)}</span>
-                    </div>
+                          </div>
                     <span className="prediction-trend-day">{point.day}일</span>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+                </div>
+              </div>
+            )}
 
       {/* 위험요인 분석 */}
         <div className="prediction-daily-risk-factors">
@@ -1624,10 +1761,10 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
                       </span>
                     </div>
                     <div className="prediction-risk-factor-message">{risk.message}</div>
-                  </div>
-                ))}
-            </div>
-          )}
+                          </div>
+                        ))}
+                </div>
+              )}
 
           {/* 일일 기록 기반 위험 요인 분석 (음식, 스트레스, 통합 분석) */}
           {dailyRiskAnalysis.length > 0 && (
@@ -1651,7 +1788,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
                                 part
                               )
                             )}"
-                          </div>
+                      </div>
                         );
                       })}
                   </div>
@@ -1677,7 +1814,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
                                 part
                               )
                             )}"
-                          </div>
+                    </div>
                         );
                       })}
                   </div>
@@ -1703,12 +1840,12 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
                                 part
                               )
                             )}"
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              )}
+          </div>
+        );
+      })}
+              </div>
+            </div>
+          )}
 
               {/* 통합 분석 칸 */}
               {dailyRiskAnalysis.find(item => item.type === 'integrated') && (
@@ -1734,7 +1871,7 @@ const FlareAnalysisResults: React.FC<Props> = ({ data }) => {
               일일 기록 데이터를 입력하면 분석 결과가 표시됩니다.
             </div>
           )}
-        </div>
+                    </div>
     </div>
   );
 };
