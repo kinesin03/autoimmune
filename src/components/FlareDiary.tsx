@@ -888,19 +888,11 @@ const MealModal: React.FC<{
 
   // 앱 재시작 시 체크 항목 초기화
   useEffect(() => {
-    // 세션이 새로 시작되었는지 확인
-    const sessionKey = 'appSessionId';
-    const currentSessionId = sessionStorage.getItem(sessionKey);
-    const newSessionId = Date.now().toString();
-    
-    if (!currentSessionId || currentSessionId !== newSessionId) {
-      // 새 세션이면 초기화
-      sessionStorage.setItem(sessionKey, newSessionId);
-      setSelectedSymptoms([]);
-      setWarningFoods([]);
-      setHasSymptom(false);
-      setOtherSymptom('');
-    }
+    // 컴포넌트가 처음 마운트될 때만 초기화
+    setSelectedSymptoms([]);
+    setWarningFoods([]);
+    setHasSymptom(false);
+    setOtherSymptom('');
   }, []);
 
   // 선택된 식사 타입에 따라 기존 데이터 로드
