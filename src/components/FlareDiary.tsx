@@ -886,24 +886,6 @@ const MealModal: React.FC<{
   const [severity, setSeverity] = useState(5);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // 앱이 나갔다가 들어올 때 선택 상태 초기화
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        // 앱이 다시 보일 때 선택 상태 초기화
-        setSelectedSymptoms([]);
-        setWarningFoods([]);
-        setHasSymptom(false);
-        setOtherSymptom('');
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
-
   // 선택된 식사 타입에 따라 기존 데이터 로드
   useEffect(() => {
     const currentMeal = meals?.[mealType];
@@ -1429,21 +1411,6 @@ const SymptomModal: React.FC<{
   const [name, setName] = useState('');
   const [severity, setSeverity] = useState<'weak' | 'medium' | 'strong'>('medium');
   const [selectedSymptom, setSelectedSymptom] = useState<string | null>(null);
-
-  // 앱이 나갔다가 들어올 때 선택 상태 초기화
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        setSelectedSymptom(null);
-        setName('');
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, []);
 
   const symptomGroups = [
     {
