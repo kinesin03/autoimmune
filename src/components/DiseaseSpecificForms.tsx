@@ -15,13 +15,8 @@ const DiseaseSpecificForms: React.FC<Props> = ({ symptoms, onChange }) => {
 
   // 앱 재시작 시 체크 항목 초기화
   useEffect(() => {
-    const sessionKey = 'appSessionId';
-    const currentSessionId = sessionStorage.getItem(sessionKey);
-    const newSessionId = Date.now().toString();
-    
-    if (!currentSessionId || currentSessionId !== newSessionId) {
-      setSelectedDisease('');
-    }
+    // 컴포넌트가 처음 마운트될 때만 초기화
+    setSelectedDisease('');
   }, []);
 
   // 자외선 수치 가져오기 (루푸스용)

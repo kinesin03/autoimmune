@@ -1431,14 +1431,9 @@ const SymptomModal: React.FC<{
 
   // 앱 재시작 시 체크 항목 초기화
   useEffect(() => {
-    const sessionKey = 'appSessionId';
-    const currentSessionId = sessionStorage.getItem(sessionKey);
-    const newSessionId = Date.now().toString();
-    
-    if (!currentSessionId || currentSessionId !== newSessionId) {
-      setSelectedSymptom(null);
-      setName('');
-    }
+    // 컴포넌트가 처음 마운트될 때만 초기화
+    setSelectedSymptom(null);
+    setName('');
   }, []);
 
   const symptomGroups = [

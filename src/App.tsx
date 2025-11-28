@@ -18,6 +18,18 @@ import './App.css';
 import './AppNewDesign.css';
 
 function App() {
+  // 앱 재시작 감지를 위한 세션 ID 설정
+  useEffect(() => {
+    const sessionKey = 'appSessionId';
+    const currentSessionId = sessionStorage.getItem(sessionKey);
+    const newSessionId = Date.now().toString();
+    
+    // 새 세션이면 세션 ID 업데이트
+    if (!currentSessionId || currentSessionId !== newSessionId) {
+      sessionStorage.setItem(sessionKey, newSessionId);
+    }
+  }, []);
+
   // localStorage에서 인트로 완료 상태 확인
   const [showFigmaIntro, setShowFigmaIntro] = useState(() => {
     // 인트로를 항상 표시하도록 설정 (테스트용)
