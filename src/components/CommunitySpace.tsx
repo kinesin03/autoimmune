@@ -24,6 +24,21 @@ interface Comment {
 const CommunitySpace: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+
+  // 앱이 나갔다가 들어올 때 선택 상태 초기화
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setSelectedTopic(null);
+        setSearchQuery('');
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
   const [posts, setPosts] = useState<Post[]>([
     {
       id: '1',

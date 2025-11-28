@@ -13,6 +13,20 @@ const DiseaseSpecificForms: React.FC<Props> = ({ symptoms, onChange }) => {
   const [selectedDisease, setSelectedDisease] = useState<string>('');
   const [uvIndex, setUvIndex] = useState<number | null>(null);
 
+  // 앱이 나갔다가 들어올 때 선택 상태 초기화
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setSelectedDisease('');
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   // 자외선 수치 가져오기 (루푸스용)
   useEffect(() => {
     const fetchUVIndex = async () => {
